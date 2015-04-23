@@ -1,0 +1,67 @@
+{%include "../../includes/header.inc"%}
+  <h2>{{first.main.title.value}}</h2>
+  <table class="table table-striped" about="{{uri}}">
+    <tr><td><b>Identifier</b></td><td>{{first.main.id.value}}</td>
+    {% if first.parent.resource %}<tr><td><b>Broader Index Term</b></td><td><a href="{{first.parent.resource.value}}">[{{first.parent.id.value}}] {{first.parent.title.value}}</td>{%endif%}
+    {% if first.children.resource %}
+    <tr>
+      <td><b>Narrower Index Terms</b></td>
+      <td>
+        {% set count=0 %}
+        {% for row in models.children %}
+          {% set count=count+1 %}
+          {% if !forloop.first && count != 6 %}<br/>{%endif%}
+          {% if count == 6 %}
+          <div id="narrowMore" class="collapse">
+          {% endif %}
+          <span><a class="busyignore" href="{{row.resource.value}}">[{{row.id.value}}] {{row.title.value}}</a></span>
+        {%endfor%}
+        {% if count > 5 %}</div><a href="#narrowMore" data-toggle="collapse">Show All</a>{%endif%} 
+	</ul>
+      </td>
+    </tr>
+    {%endif%}
+    {% if first.related.resource %}
+    <tr>
+      <td><b>Related Index Terms</b></td>
+      <td>
+      {% for row in models.related %}
+        {% if !forloop.first %}<br/>{%endif%}
+        <span><a href="{{row.resource.value}}">[{{row.id.value}}] {{row.title.value}}</a></span>
+      {%endfor%}
+      </td>
+    </tr>
+    {%endif%}
+  </table>
+  <h3>Related Abstracts</h3>
+  {% if lodspk.args.arg2 %}
+    {% if lodspk.args.arg3 %}
+      {% if lodspk.args.arg3 + lodspk.args.arg2 < first.abstractCount.count.value %}
+      {% set total = lodspk.args.arg2 + lodspk.args.arg3 %}
+      {% else %}
+      {% set total = first.abstractCount.count.value %}
+      {% endif %}
+      <p>Displaying results {{lodspk.args.arg3|intval|increment}}-{{total}} out of {{first.abstractCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+    {% else %}
+    <p>Displaying results 1-{{lodspk.args.arg2}} out of {{first.abstractCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+    {% endif %}
+  {% else %}
+  <p>Displaying results 1-{{lodspk.pagingLimit}} out of {{first.abstractCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+  {% endif %}
+  {% if first.abstracts.resource %}
+    <ol {% if lodspk.args.arg3 %}start="{{lodspk.args.arg3|increment}}"{% endif %}>     
+    {% for row in models.abstracts %}
+      <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}-{{row.id.value}}] {{row.title.value|urldecode}}</a></li>
+    {% endfor %}
+    </ol>
+    <span>
+      {% if lodspk.pagingLimit < first.abstractCount.count.value %}
+      | <a href="{{lodspk.home}}keywords/{{first.main.id.value}}/abstracts/{{lodspk.pagingLimit}}/{{lodspk.pagingLimit}}#relatedAbstracts"><button>Next</button></a>
+      {% endif %}
+    Results Per Page
+    <select id="limitsel" style="width:4.1em" onChange="refreshPaging(this.value,'abstracts')"><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select>
+    </span><br/>&nbsp;
+  {% endif %}
+{% set limit = lodspk.pagingLimit %}
+{%include "../../includes/pagingjs.inc"%}
+{%include "../../includes/footer.inc"%}

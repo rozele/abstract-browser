@@ -1,0 +1,68 @@
+{%include "../../includes/header.inc"%}
+  {% if lodspk.args.arg2 %}
+    {%if lodspk.args.arg2 == "sections" %}
+      {% if lodspk.args.arg4 %}
+        {% if lodspk.args.arg4 == "sessions" %}
+          {% if lodspk.args.arg6 %}
+            {% if lodspk.args.arg6 == "abstracts" %}
+              <ul>
+              {% for row in models.abstracts %}
+                <li><a href="{{ row.resource.value }}">[{{row.id.value}}] {{row.title.value|urldecode}}</a></li>
+              {% endfor %}
+              </ul>
+            {%else%}
+              {%include "../../includes/service-error.inc"%}
+            {%endif%}
+          {%else%}
+            {% if lodspk.args.arg5 %}
+              {%include "../../includes/uri-error.inc"%}
+            {%else%}
+              <ul>
+              {% for row in models.sessions %}
+                <li><a href="{{ row.resource.value }}">[{{row.id.value}}] {{row.title.value}}</a></li>
+              {% endfor %}
+              </ul>
+            {%endif%}
+          {%endif%}
+        {%else%}
+          {%include "../../includes/service-error.inc"%}
+        {%endif%}
+      {%else%}
+	{% if lodspk.args.arg3 && models.sessions|length > 0 %}
+          <h2>{{first.sections.title.value}} - {{first.meetings.year.value|substr:"0,4"}} {{first.meetings.title.value}}</h2>
+            <p>Check out the <a href="{{first.sections.resource.value}}">{{first.sections.title.value}} page</a>.</p>
+          <h2>Sessions</h2>
+          <!--<p>Showing Results 1 - {{first.sessionsCount.count.value}} of {{first.sessionsCount.count.value}}, sorted reverse chronologically:</p>-->
+          <ol>
+          {% for row in models.sessions %}
+            <li><a href="{{ row.resource.value }}">[{{row.id.value}}] {{row.title.value}}</a></li>
+          {% endfor %}
+          </ol>
+        {%else%}
+          {%if lodspk.args.arg3 && models.sessions|length == 0 %}
+            {%include "../../includes/service-error.inc"%}
+          {%else%}
+            {% for row in models.sections %}
+              <li><a href="sections/{{ row.id.value }}">[{{row.id.value}}] {{row.title.value}}</a></li>
+            {% endfor %}
+          {%endif%}
+        {%endif%}
+      {%endif%}
+    {%else%}
+      {%include "../../includes/service-error.inc"%}
+    {%endif%}
+  {%else%}
+    <h1>Meetings</h1>
+    <table>
+    {% for row in models.meetings %}
+      <tr style="padding-bottom:1em">
+        <td>{% if row.thumbnail %}<a class="thumbnail" href="{{ row.resource.value }}"><img width="70px" src="{{row.thumbnail.value}}" alt="thumbnail" /></a>{%endif%}</td>
+        <td style="vertical-align:top;padding-left:1em">
+          <h3><a href="{{row.resource.value}}">{{row.year.value|substr:"0,4"}} {{row.title.value}}</a></h3>
+          <p>{{row.start.value|date:"d"}}{% if row.start.value|date:"F" != row.end.value|date:"F" %} {{row.start.value|date:"F"}}{%endif%} - {{row.end.value|date:"d F"}}, {{row.location.value}}</p>
+        </td>
+      </tr>
+    {% endfor %}
+    </table>
+  {%endif%}
+{%include "../../includes/footer.inc"%}

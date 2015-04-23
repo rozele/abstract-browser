@@ -1,0 +1,21 @@
+SELECT DISTINCT ?name ?id ?resource ?code MAX(?myear) as ?year MAX(?mstart) as ?start
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  ?section dcterms:identifier "{{lodspk.args.arg0}}"^^xsd:string .
+  ?resource agu:section ?section ;
+    swc:isSubEventOf ?meeting ;
+    dcterms:identifier ?id .
+  GRAPH ?graph { ?resource swrc:eventTitle ?name }
+  ?meeting agu:meetingCode ?code ;
+    swrc:year ?myear ;
+    swrc:startDate ?mstart .
+}
+ORDER BY desc(?start) ?id
+{% if lodspk.args.arg2 %}
+LIMIT {{lodspk.args.arg2}}
+{% else %}
+LIMIT {{lodspk.pagingLimit}}
+{% endif %}
+{% if lodspk.args.arg3 %}
+OFFSET {{lodspk.args.arg3}}
+{% endif %}

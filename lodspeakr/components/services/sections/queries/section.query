@@ -1,0 +1,10 @@
+SELECT DISTINCT ?name
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?section a agu:Section .
+  } 
+  ?section dcterms:title ?name ;
+    dcterms:identifier "{{lodspk.args.arg0}}"^^xsd:string .
+}
+LIMIT 1

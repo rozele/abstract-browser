@@ -1,0 +1,63 @@
+{%include "../../includes/header.inc"%}
+{% if lodspk.args.arg1 %}
+  {% if lodspk.args.arg1 == "sessions" %}
+    <h2>[{{lodspk.args.arg0}}] {{first.section.name.value}}</h2>
+    <h3>Sponsored Sessions</h3>
+    {% if lodspk.args.arg2 %}
+      {% if lodspk.args.arg3 %}
+        {% if lodspk.args.arg3 + lodspk.args.arg2 < first.sessionCount.count.value %}
+        {% set total = lodspk.args.arg2 + lodspk.args.arg3 %}
+        {% else %}
+        {% set total = first.sessionCount.count.value %}
+        {% endif %}
+        <p>Displaying results {{lodspk.args.arg3|intval|increment}}-{{total}} out of {{first.sessionCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+      {% else %}
+      <p>Displaying results 1-{{lodspk.args.arg2}} out of {{first.sessionCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+      {% endif %}
+    {% else %}
+    <p>Displaying results 1-{{lodspk.pagingLimit}} out of {{first.sessionCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+    {% endif %}
+    {% if first.sessions.resource %}
+      <ol {% if lodspk.args.arg3 %}start="{{lodspk.args.arg3|increment}}"{% endif %}>     
+      {% for row in models.sessions %}
+        <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}-{{row.id.value}}] {{row.name.value}}</a></li>
+      {% endfor %}
+      </ol>
+      {% if lodspk.args.arg3 %}
+        {% set prev = lodspk.args.arg3 - lodspk.args.arg2 %}{% set next = lodspk.args.arg3 + lodspk.args.arg2 %}
+      {% else %}{% if lodspk.args.arg2 %}{% set next = lodspk.args.arg2 %}
+      {% else %}{% set next = lodspk.pagingLimit %}{% endif %}{% endif %}
+      {% if lodspk.args.arg2 %}{% set limit = lodspk.args.arg2 %}
+      {% else %}{% set limit = lodspk.pagingLimit %}{% endif %} 
+      <span>
+        {% if lodspk.args.arg3 %}
+          {% if lodspk.args.arg3 > 0 %}
+          <a href="{{lodspk.home}}sections/{{lodspk.args.arg0}}/sessions/{{lodspk.args.arg2}}/{{prev}}"><button>Prev</button></a> 
+          {% endif %}
+          {% if lodspk.args.arg3 + limit < first.sessionCount.count.value %}
+            | <a href="{{lodspk.home}}sections/{{lodspk.args.arg0}}/sessions/{{limit}}/{{next}}"><button>Next</button></a>
+          {% endif %}
+        {% else %}
+          {% if limit < first.sessionCount.count.value %}
+          | <a href="{{lodspk.home}}sections/{{lodspk.args.arg0}}/sessions/{{limit}}/{{next}}"><button>Next</button></a>
+          {% endif %}
+        {% endif %}
+        Results Per Page
+        <select id="limitsel" style="width:4.1em" onChange="refreshPaging(this.value,'sessions')"><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select>
+      </span><br/>&nbsp;
+    {% endif %}
+  {% else %}
+    {%include "../../includes/service-error.inc"%}
+  {% endif %}
+{% else %}
+<div>
+  <h2>Sections</h2>
+  <ol>
+  {% for row in models.sections %}
+    <li><a href="{{row.resource.value}}">[{{row.id.value}}] {{row.name.value}}</a></li>
+  {%endfor%}
+  </ol>
+</div>
+{% endif %}
+{%include "../../includes/pagingjs.inc"%}
+{%include "../../includes/footer.inc"%}

@@ -1,0 +1,7 @@
+SELECT COUNT(DISTINCT ?resource) as ?count
+WHERE {
+  {%include "../../../includes/tri-graphs.inc"%}
+  GRAPH ?g1 { ?section a agu:Section . }
+  ?section dcterms:identifier "{{lodspk.args.arg0}}"^^xsd:string .
+  ?resource agu:section ?section .
+}

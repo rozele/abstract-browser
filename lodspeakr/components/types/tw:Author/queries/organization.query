@@ -1,0 +1,11 @@
+SELECT DISTINCT ?resource ?name
+WHERE {
+  {%include "../../../includes/duo-graphs.inc"%}
+  GRAPH ?g1 {
+    <{{uri}}> tw:withAffiliation ?resource .
+  }
+  GRAPH ?g2 {
+    ?resource dcterms:description ?name .
+  } 
+}
+LIMIT 1

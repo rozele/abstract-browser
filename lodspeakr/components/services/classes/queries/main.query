@@ -1,0 +1,9 @@
+SELECT DISTINCT ?resource 
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?x a ?resource .
+  }
+}
+ORDER BY ?resource
+LIMIT {{lodspk.maxResults}}

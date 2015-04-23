@@ -1,0 +1,15 @@
+SELECT DISTINCT ?resource ?label 
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    { ?resource a agu:Abstract ; dcterms:title ?label } UNION
+    { ?resource a swc:SessionEvent ; swrc:eventTitle ?label } UNION
+    { ?resource a agu:Section ; dcterms:title ?label } UNION
+    { ?resource a foaf:Person ; foaf:name ?label } UNION
+    { ?resource a foaf:Organization ; dcterms:description ?label } UNION
+    { ?resource a swrc:ResearchTopic ; dcterms:subject ?label }
+  }
+  ?resource ?p ?search .
+  ?search bif:contains '{{lodspk.args.arg0|urldecode}}' .
+}
+LIMIT 10

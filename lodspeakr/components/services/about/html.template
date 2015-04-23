@@ -1,0 +1,65 @@
+{%include "../../includes/header.inc"%}
+{%include "../../includes/banner.inc"%}
+{% if lodspk.args.arg0 %}
+{% if lodspk.args.arg0 == "lod" %}
+<h2>How to Use AGU Abstract Browser Linked Data</h2>
+<p>You can get machine readable representations of some of the AGU entities in one of two ways, using the file extension on the URL, or using an HTTP Accept header with the corresponding MIME type.  The former can be easily tested in the browser, the latter is more easily tested with a command-line utility such as <a href="http://curl.haxx.se/">cURL</a>.</p>
+<p>The following types of entities can return machine-readable RDF:
+<ul>
+<li>Meeting pages, e.g., <a href="{{lodspk.home}}meetings/2012/FM">Fall Meeting 2012</a></li>
+<li>Section pages, e.g., <a href="{{lodspk.home}}sections/IN">Earth and Space Science Informatics</a></li>
+<li>Session pages, e.g., <a href="{{lodspk.home}}meetings/2012/FM/sections/IN/sessions/IN51C">Linked Data for Earth and Space Science Posters</a></li>
+<li>Abstract pages, e.g., <a href="{{lodspk.home}}meetings/2012/FM/sections/IN/sessions/IN51C/abstracts/IN51C-1696.html">Creating a Linked Data Hub in the Geosciences</a>
+<li>People pages, e.g., <a href="{{lodspk.home}}people/rozele@rpi.edu.html">Eric Rozell</a></li>
+<li>Organization pages, e.g., <a href="{{lodspk.home}}organizations/152719.html">Woods Hole Oceanographic Institution</a></li>
+</ul>
+</p>
+<p>The following machine-readable formats are supported:
+<table class="table">
+<tr><th>Format</th><th>MIME</th><th>Extension</th></tr>
+<tr><td><a href="http://en.wikipedia.org/wiki/Html">HTML</a></td><td>text/html</td><td>.html</td></tr>
+<tr><td><a href="http://en.wikipedia.org/wiki/RDF/XML">RDF/XML</a></td><td>application/rdf+xml</td><td>.rdf</td></tr>
+<tr><td><a href="http://en.wikipedia.org/wiki/N-Triples">N-Triples</a></td><td>text/plain</td><td>.nt</td></tr>
+<tr><td><a href="http://en.wikipedia.org/wiki/Turtle_(syntax)">Turtle</a></td><td>text/turtle</td><td>.ttl</td></tr>
+<!--<tr><td><a href="http://en.wikipedia.org/wiki/Notation_3">Notation3</a></td><td>text/n3</td><td>.n3</td></tr>-->
+</table></p>
+{%else%}
+{% if lodspk.args.arg0 == "advsrch" %}
+<h2>Advanced Search Field Overview</h2>
+<p>Here is a summary of how to use each of the fields in the boolean Advanced Search interface:
+<table class="table">
+<tr><th>Search Field</th><th>Summary</th><th>Example(s)</th></tr>
+<tr><td>All Fields</td><td>Searches over all the metadata for each abstract.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=linked+data&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"linked data"</a></td></tr>
+<tr><td>Abstract</td><td>Substring search over the text of each abstract.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=linked+data&field%5B%5D=abstract&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"linked data"</a></td></tr>
+<tr><td>Abstract Title</td><td>Substring search over the title of each abstract.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=linked+data&field%5B%5D=abstitle&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"linked data"</a></td></tr>
+<tr><td>Abstract Number</td><td>Exact search for an abstract number.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=IN51C-1696&field%5B%5D=abscode&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"IN51C-1696"</a></td></tr>
+<tr><td>Index Term</td><td>Substring search for an index term description or exact search for index term number.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=semantic+web&field%5B%5D=keyword&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"semantic web"</a>, <a href="{{lodspk.home}}dbsearch.php?q%5B%5D=1970&field%5B%5D=keyword&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"1970"</a></td></tr>
+<tr><td>Author Name</td><td>Substring search for an author name.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=rozell&field%5B%5D=author&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"rozell"</a></td></tr>
+<tr><td>Author Email</td><td>Exact search for an author email.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=rozele%40rpi.edu&field%5B%5D=email&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"rozele@rpi.edu"</a></td></tr>
+<tr><td>Author Affiliation</td><td>Substring search for an author affiliation.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=Rensselaer&field%5B%5D=affiliation&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"Rensselaer"</a></td></tr>
+<tr><td>Session Code</td><td>Exact search for a session code.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=IN51C&field%5B%5D=sid&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"IN51C"</a></td></tr>
+<tr><td>Session Title</td><td>Substring search for a session title.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=linked+data&field%5B%5D=session&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"linked data"</a></td></tr>
+<tr><td>Convener Name</td><td>Substring search for a session convener name.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=narock&field%5B%5D=convener&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"narock"</a></td></tr>
+<tr><td>Meeting Name</td><td>Substring search for meeting name.  Possible values are "Fall Meeting", "Spring Meeting", "Ocean Sciences", "Western Pacific Geosciences Meeting", "Joint Assembly", and "Meeting of the Americas"</td><td><a href="">"fall meeting"</a></td></tr>
+<tr><td>Meeting Year</td><td>Exact search for a meeting year.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=OS&field%5B%5D=mtgcode&boolean%5B%5D=and&q%5B%5D=2006&field%5B%5D=mtgyear&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"2006"</a></td></tr>
+<tr><td>Meeting Code</td><td>Exact search for a meeting code.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=OS&field%5B%5D=mtgcode&boolean%5B%5D=and&q%5B%5D=2006&field%5B%5D=mtgyear&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"OS"</a></td></tr>
+<tr><td>Section Name</td><td>Substring search for a section name.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=informatics&field%5B%5D=section&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"informatics"</a></td></tr>
+<tr><td>Section Code</td><td>Exact search for a section code.</td><td><a href="{{lodspk.home}}dbsearch.php?q%5B%5D=IN&field%5B%5D=scode&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all&boolean%5B%5D=and&q%5B%5D=&field%5B%5D=all">"IN"</a></td></tr>
+</table>
+</p>
+{%endif%}
+{%endif%}
+{%else%}
+<h2>About</h2>
+<p>The AGU Abstract Browser is a set of services for search and discovery of abstracts from past AGU-sponsored meetings, including the Fall Meeting, Joint Assembly, Ocean Sciences, Western Pacific Geosciences meeting, and the Meeting of the Americas.</p>
+<p>Currently, there are four services that can be used to find abstracts:
+<ul>
+<li><a href="{{lodspk.home}}meetings">Meeting-at-a-Glance</a> - The Meeting-at-a-Glance experience has been reworked to leverage the power of linked data, providing the ability to follow links to various entities, including meetings, sections, sessions, authors, organizations, and index terms, in order to discover related work.</li>
+<li><a href="{{lodspk.home}}sections">Sections pages</a> - Start looking for sessions from the AGU section you most closely identify with the new Sections pages.</li>
+<li><a href="{{lodspk.home}}keywords">Index Terms pages</a> - Start looking for abstracts tagged with index terms that you are interested in from the new Index Term pages.</li>  
+<li><a href="{{lodspk.home}}dbsearch.php">Advanced Search</a> - Use the boolean Advanced Search interface for a more fine-grained abstract search experience.</li>
+</ul>
+Or, find abstracts from the <a href="{{first.latest.resource.value}}">{{first.latest.year.value|substr:"0,4"}} {{first.latest.title.value}}</a>.</p>
+<p>The AGU Abstract Browser is based on <a href="http://en.wikipedia.org/wiki/Linked_Data">linked data</a>, and offers human-readable HTML pages, as well as machine-readable RDF pages for many of the entities contained herein.  For instance, you can request an RDF/XML representation of each abstract by simply replacing the ".html" extension at the end of the hyperlink with ".rdf".  For a more detailed description, see our <a href="{{lodspk.home}}about/lod">How To Use AGU Linked Data</a> page.</p>
+{%endif%}
+{%include "../../includes/footer.inc"%}

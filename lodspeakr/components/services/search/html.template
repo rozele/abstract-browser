@@ -1,0 +1,18 @@
+{%include "../../includes/header.inc"%}
+{%include "../../includes/banner.inc"%}
+<div>
+<h2>AGU Abstract Browser Search</h2>
+{% if lodspk.args.arg0 %}
+  <p><span>Here are the results for "{{lodspk.args.arg0}}"</span></p>
+  <ol>
+  {% for row in models.search %}
+    <li><a href="{{ row.resource.value }}">{{row.label.value|urldecode}}</a></li>
+  {% endfor %}
+  </ol>
+{%else%}
+<p>Search using terms of interest:</p>
+<p id="popsearch"><span><input type="text" id="search" /> <a href="#" class="btn" style="vertical-align:top" id="submit">Search</a></span></p>
+{%endif%}
+</div>
+{%include "../../includes/popsearch.inc"%}
+{%include "../../includes/footer.inc"%}

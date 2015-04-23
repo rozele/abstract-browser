@@ -1,0 +1,18 @@
+SELECT DISTINCT ?resource ?year ?title ?start ?end ?location ?thumbnail
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?resource a swrc:Meeting .
+  }
+  ?resource swrc:year ?year .
+  ?resource swrc:startDate ?start .
+  ?resource swrc:endDate ?end .
+  ?resource swrc:eventTitle ?title .
+  ?resource swrc:location ?location .
+  OPTIONAL { ?resource foaf:thumbnail ?thumbnail . }
+  {% if lodspk.args.arg0 %}
+    FILTER (?year = "{{lodspk.args.arg0}}"^^xsd:gYear) .
+  {%endif%}
+}
+ORDER BY desc(?end)
+LIMIT 1

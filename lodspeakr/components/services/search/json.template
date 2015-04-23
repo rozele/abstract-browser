@@ -1,0 +1,5 @@
+[
+{%for i in models.search%}{%if !forloop.first && models.search|length > 1%},{%endif%}
+  { "value": "{{i.label.value|urldecode|substr:"0,40"}}...", "uri": "{{i.resource.value}}"}
+{%endfor%}
+]

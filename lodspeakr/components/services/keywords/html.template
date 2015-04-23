@@ -1,0 +1,103 @@
+{%include "../../includes/header.inc"%}
+<div class="container-fluid">
+<div id="popsearch">
+{% if lodspk.args.arg0 == "search" && lodspk.args.arg1 %}
+  <h2>Index Terms Search</h2>
+  <p>Search for the index term of interest:</p>
+  <p><form id="searchform" action="#" method="get"><input type="text" id="search" value="{{lodspk.args.arg1}}"/> <input type="submit" style="vertical-align:top" class="btn" value="Search"/></form></p>
+  <p><span>Here are the results for "{{lodspk.args.arg1}}"</span></p>
+  <ol>
+  {% for row in models.search %}
+    <li><a href="{{ row.resource.value }}">[{{row.id.value}}] {{row.title.value}}</a></li>
+  {% endfor %}
+  </ol>
+{%else%}
+{% if lodspk.args.arg1 == "abstracts" %}
+  <h2>{{first.keyword.title.value}}</h2>
+  <table class="table table-striped" about="{{uri}}">
+    <tr><td><b>Identifier</b></td><td>{{first.keyword.id.value}}</td>
+    {% if first.keywordParent.resource %}<tr><td><b>Broader Index Term</b></td><td><a href="{{first.keywordParent.resource.value}}">[{{first.keywordParent.id.value}}] {{first.keywordParent.title.value}}</td>{%endif%}
+    {% if first.keywordChildren.resource %}
+    <tr>
+      <td><b>Narrower Index Terms</b></td>
+      <td>
+        {% for row in models.keywordChildren %}
+          {% if !forloop.first %}<br/>{%endif%}
+          <span><a href="{{row.resource.value}}">[{{row.id.value}}] {{row.title.value}}</a></span>
+        {%endfor%}
+	</ul>
+      </td>
+    </tr>
+    {%endif%}
+    {% if first.keywordRelated.resource %}
+    <tr>
+      <td><b>Related Index Terms</b></td>
+      <td>
+      {% for row in models.keywordRelated %}
+        {% if !forloop.first %}<br/>{%endif%}
+        <span><a href="{{row.resource.value}}">[{{row.id.value}}] {{row.title.value}}</a></span>
+      {%endfor%}
+      </td>
+    </tr>
+    {%endif%}
+  </table>
+  <h3 id="relatedAbstracts">Related Abstracts</h3>
+  {% if lodspk.args.arg2 %}
+    {% if lodspk.args.arg3 %}
+      {% if lodspk.args.arg3 + lodspk.args.arg2 < first.abstractCount.count.value %}
+      {% set total = lodspk.args.arg2 + lodspk.args.arg3 %}
+      {% else %}
+      {% set total = first.abstractCount.count.value %}
+      {% endif %}
+      <p>Displaying results {{lodspk.args.arg3|intval|increment}}-{{total}} out of {{first.abstractCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+    {% else %}
+    <p>Displaying results 1-{{lodspk.args.arg2}} out of {{first.abstractCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+    {% endif %}
+  {% else %}
+  <p>Displaying results 1-{{lodspk.pagingLimit}} out of {{first.abstractCount.count.value}}, sorted by meeting date (decreasing), then abstract number.</p>
+  {% endif %}
+  {% if first.abstracts.resource %}
+    <ol {% if lodspk.args.arg3 %}start="{{lodspk.args.arg3|increment}}"{% endif %}>     
+    {% for row in models.abstracts %}
+      <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}-{{row.id.value}}] {{row.title.value|urldecode}}</a></li>
+    {% endfor %}
+    </ol>
+    {% if lodspk.args.arg3 %}
+      {% set prev = lodspk.args.arg3 - lodspk.args.arg2 %}{% set next = lodspk.args.arg3 + lodspk.args.arg2 %}
+    {% else %}{% if lodspk.args.arg2 %}{% set next = lodspk.args.arg2 %}
+    {% else %}{% set next = lodspk.pagingLimit %}{% endif %}{% endif %}
+    {% if lodspk.args.arg2 %}{% set limit = lodspk.args.arg2 %}
+    {% else %}{% set limit = lodspk.pagingLimit %}{% endif %} 
+    <span>
+      {% if lodspk.args.arg3 %}
+        {% if lodspk.args.arg3 > 0 %}
+        <a href="{{lodspk.home}}keywords/{{lodspk.args.arg0}}/abstracts/{{lodspk.args.arg2}}/{{prev}}#relatedAbstracts"><button>Prev</button></a> 
+        {% endif %}
+        {% if lodspk.args.arg3 + limit < first.abstractCount.count.value %}
+          | <a href="{{lodspk.home}}keywords/{{lodspk.args.arg0}}/abstracts/{{limit}}/{{next}}#relatedAbstracts"><button>Next</button></a>
+        {% endif %}
+      {% else %}
+        {% if limit < first.abstractCount.count.value %}
+        | <a href="{{lodspk.home}}keywords/{{lodspk.args.arg0}}/abstracts/{{limit}}/{{next}}#relatedAbstracts"><button>Next</button></a>
+        {% endif %}
+      {% endif %}
+      Results Per Page
+      <select id="limitsel" style="width:4.1em" onChange="refreshPaging(this.value,'abstracts')"><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select>
+    </span><br/>&nbsp;
+  {% endif %}
+{%else%}
+<h2>Index Terms Search</h2>
+<p>Search for the index term of interest:</p>
+<p><form id="searchform" action="#" method="get"><input type="text" id="search" value="{{lodspk.args.arg1}}"/> <input type="submit" style="vertical-align:top" class="btn" value="Search"/></form></p>
+<p><span>Or, start from the high-level index terms:</span></p>
+<ol>
+{% for row in models.highlevel %}
+  <li><a href="{{ row.resource.value }}">[{{row.id.value}}] {{row.title.value}}</a></li>
+{%endfor%}
+</ol>
+{%endif%}
+{%endif%}
+</div></div>
+{%include "../../includes/pagingjs.inc"%}
+{%include "../../includes/popsearch.inc"%}
+{%include "../../includes/footer.inc"%}

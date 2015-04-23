@@ -1,0 +1,14 @@
+SELECT DISTINCT ?resource ?id ?name
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a swrc:Meeting .
+  }
+  ?session swc:isSubEventOf <{{uri}}> .
+  ?session a swc:SessionEvent .
+  ?session agu:section ?resource .
+  ?resource dcterms:identifier ?id .
+  ?resource dcterms:title ?name .
+}
+ORDER BY ?id
+LIMIT {{lodspk.maxResults}}

@@ -1,0 +1,14 @@
+SELECT DISTINCT ?id ?title as ?title ?abstract
+WHERE {
+  {%include "../../../includes/duo-graphs.inc"%}
+  GRAPH ?g1 {
+    <{{uri}}> a swc:SessionEvent .
+  }
+  GRAPH ?g2 {
+    ?abstract swc:relatedToEvent <{{uri}}> ;
+      dcterms:title ?title .
+      OPTIONAL { ?abstract dcterms:identifier ?id . }
+  }
+}
+ORDER BY ?id
+LIMIT {{lodspk.maxResults}}

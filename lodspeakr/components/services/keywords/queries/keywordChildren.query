@@ -1,0 +1,13 @@
+SELECT DISTINCT ?resource ?title ?id
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?keyword a swrc:ResearchTopic .
+  }
+  ?keyword dcterms:identifier "{{lodspk.args.arg0}}"^^xsd:string .
+  ?resource skos:broadMatch ?keyword ;
+    dcterms:subject ?title ;
+    dcterms:identifier ?id .
+}
+ORDER BY ?id
+LIMIT {{lodspk.maxResults}}

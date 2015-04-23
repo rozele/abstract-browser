@@ -1,0 +1,22 @@
+SELECT DISTINCT ?title ?id ?text ?sessionTitle ?session ?meeting ?meetingTitle ?meetingYear ?section ?sectionTitle ?citation ?withdrawn
+WHERE {
+  {%include "../../../includes/duo-graphs.inc"%}
+  GRAPH ?g1 {
+    <{{uri}}> a agu:Abstract ;
+      swc:relatedToEvent ?session ;
+      swrc:abstract ?text ;
+      dcterms:title ?title .
+    OPTIONAL { <{{uri}}> dcterms:identifier ?id . }
+  }
+  GRAPH ?g2 {
+    ?session swc:isSubEventOf ?meeting ;
+      swrc:eventTitle ?sessionTitle ;
+      agu:section ?section .
+  }
+  ?meeting swrc:eventTitle ?meetingTitle ;
+    swrc:year ?meetingYear .
+  OPTIONAL { ?meeting agu:citationStyle ?citation . }
+  OPTIONAL { <{{uri}}> agu:withdrawn ?withdrawn . }
+  ?section dcterms:title ?sectionTitle .
+}
+LIMIT 1

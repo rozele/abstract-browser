@@ -1,0 +1,12 @@
+SELECT DISTINCT ?resource ?id ?title
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a agu:Abstract .
+  }
+  <{{uri}}> swc:hasTopic ?resource .
+  ?resource dcterms:subject ?title ;
+    dcterms:identifier ?id .
+}
+ORDER BY ?id
+LIMIT {{lodspk.maxResults}}

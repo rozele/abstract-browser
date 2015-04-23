@@ -1,0 +1,10 @@
+SELECT DISTINCT ?title ?id
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a swrc:ResearchTopic .
+  }
+  <{{uri}}> dcterms:subject ?title ;
+    dcterms:identifier ?id .
+}
+LIMIT 1

@@ -1,0 +1,15 @@
+SELECT DISTINCT ?abstract ?abstitle ?person ?personname ?index
+WHERE {
+  {%include "../../../includes/duo-graphs.inc"%}
+  GRAPH ?g1 {
+    <{{uri}}> a tw:Author ;
+      tw:index ?index .
+    ?abstract tw:hasAgentWithRole <{{uri}}> ;
+      dcterms:title ?abstitle .
+  }
+  GRAPH ?g2 {
+    ?person tw:hasRole <{{uri}}> ;
+      foaf:name ?personname .
+  } 
+}
+LIMIT 1

@@ -1,0 +1,15 @@
+SELECT DISTINCT ?year ?title ?start ?end ?location ?thumbnail ?code
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a swrc:Meeting .
+  }
+  <{{uri}}> swrc:year ?year ;
+    swrc:startDate ?start ;
+    swrc:endDate ?end ;
+    swrc:eventTitle ?title ;
+    swrc:location ?location ;
+    agu:meetingCode ?code .
+  OPTIONAL { <{{uri}}> foaf:thumbnail ?thumbnail . }
+}
+LIMIT 1

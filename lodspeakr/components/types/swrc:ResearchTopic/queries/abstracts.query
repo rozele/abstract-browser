@@ -1,0 +1,20 @@
+SELECT DISTINCT ?resource ?title ?id ?code MAX(?myear) as ?year
+WHERE {
+  {%include "../../../includes/duo-graphs.inc"%}
+  GRAPH ?g1 {
+    <{{uri}}> a swrc:ResearchTopic .
+  }
+  GRAPH ?g2 {
+    ?resource a agu:Abstract ;
+      swc:hasTopic <{{uri}}> ;
+      dcterms:title ?title ;
+      dcterms:identifier ?id ;
+      swc:relatedToEvent ?session .
+  }
+  ?session swc:isSubEventOf ?meeting .
+  ?meeting swrc:year ?myear .
+  ?meeting agu:meetingCode ?code ;
+    swrc:startDate ?start .
+}
+ORDER BY desc(?start) ?resource
+LIMIT {{lodspk.pagingLimit}}

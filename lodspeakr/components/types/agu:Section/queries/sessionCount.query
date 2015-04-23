@@ -1,0 +1,4 @@
+SELECT COUNT(DISTINCT ?resource) as ?count
+WHERE {
+  ?resource agu:section <{{uri}}> .
+}

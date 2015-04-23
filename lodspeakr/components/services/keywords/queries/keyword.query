@@ -1,0 +1,10 @@
+SELECT DISTINCT ?title ?id
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?keyword a swrc:ResearchTopic .
+  }
+  ?keyword dcterms:identifier "{{lodspk.args.arg0}}"^^xsd:string ;
+    dcterms:identifier ?id ;
+    dcterms:subject ?title .
+}

@@ -1,0 +1,19 @@
+SELECT DISTINCT ?resource ?id ?title
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  ?meeting agu:meetingCode "{{lodspk.args.arg1}}"^^xsd:string .
+  ?meeting swrc:year ?year .
+  FILTER regex(?year,"^{{lodspk.args.arg0}}")
+  ?session swc:isSubEventOf ?meeting .
+  ?session a swc:SessionEvent .
+  { ?session dcterms:identifier "{{lodspk.args.arg5}}"^^xsd:string . } UNION
+  { ?session dcterms:identifier "{{lodspk.args.arg5}}" . }
+  ?resource swc:relatedToEvent ?session .
+  GRAPH ?graph {
+    ?resource a agu:Abstract .
+  }
+  ?resource dcterms:title ?title .
+  ?resource dcterms:identifier ?id .
+}
+ORDER BY ?resource
+LIMIT {{lodspk.maxResults}}

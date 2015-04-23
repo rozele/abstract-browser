@@ -1,0 +1,16 @@
+{%include "../../includes/header.inc"%}
+    <h2>{{first.main.year.value|substr:"0,4"}} {{first.main.title.value}}</h2>
+    <h3>Details</h3>
+    <table class="table table-striped" about="{{uri}}">
+    <tr><td><b>Location</b></td><td>{{first.main.location.value}}</td></tr>
+    <tr><td><b>Start Date</b></td><td>{{first.main.start.value|date:"F d, Y"}}</td></tr>
+    <tr><td><b>End Date</b></td><td>{{first.main.end.value|date:"F d, Y"}}</td></tr>
+    </table>
+    <h3><a style="color:black" href="{{first.main.code.value}}/sections">Meeting at a Glance</a></h3>
+    <p>See all the sessions for each section of the AGU meeting.</p>
+    <ol>
+    {% for row in models.sections %}
+    <li><a href="{{first.main.code.value}}/sections/{{row.id.value}}">[{{row.id.value}}] {{row.name.value}}</a></li>
+    {% endfor %}
+    </ol>
+{%include "../../includes/footer.inc"%}

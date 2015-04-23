@@ -1,0 +1,10 @@
+SELECT DISTINCT ?id ?name
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a agu:Section .
+  } 
+  <{{uri}}> dcterms:title ?name ;
+    dcterms:identifier ?id .
+}
+LIMIT 1

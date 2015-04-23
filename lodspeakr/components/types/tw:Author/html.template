@@ -1,0 +1,9 @@
+{%include "../../includes/header.inc"%}
+    <h2>{{first.main.title.value}}</h2>
+    <table class="table table-striped" about="{{uri}}">
+      <tr><td><b>Person</b></td><td><a href="{{first.main.person.value}}">{{first.main.personname.value}}</a></td>
+      {% if first.organization.resource %}<tr><td><b>Affiliation</b></td><td><a href="{{first.organization.resource.value}}">{{first.organization.name.value}}</a></td>{%endif%}
+      <tr><td><b>Abstract</b></td><td><a href="{{first.main.abstract.value}}">{{first.main.abstitle.value|urldecode}}</a></td>
+      <tr><td><b>Author Index</b></td><td>{{first.main.index.value}}</td>
+    </table>
+{%include "../../includes/footer.inc"%}

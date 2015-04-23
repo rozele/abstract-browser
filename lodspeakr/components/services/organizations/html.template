@@ -1,0 +1,3 @@
+{%include "../../includes/header.inc"%}
+{%include "../../includes/construction.inc"%}
+{%include "../../includes/footer.inc"%}

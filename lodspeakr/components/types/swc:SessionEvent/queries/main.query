@@ -1,0 +1,15 @@
+SELECT DISTINCT ?title ?id ?meeting ?meetingTitle ?meetingYear ?section ?sectionTitle
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a swc:SessionEvent ;
+      swc:isSubEventOf ?meeting ;
+      swrc:eventTitle ?title ;
+      agu:section ?section ;
+      dcterms:identifier ?id .
+  }
+  ?meeting swrc:eventTitle ?meetingTitle ;
+    swrc:year ?meetingYear .
+  ?section dcterms:title ?sectionTitle .
+}
+LIMIT 1

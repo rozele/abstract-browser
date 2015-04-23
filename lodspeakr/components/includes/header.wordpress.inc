@@ -1,0 +1,495 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie8 oldie" lang="en-US" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie8 oldie" lang="en-US" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 oldie" lang="en-US" > <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US" > <!--<![endif]-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+
+  
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Favicon and Feed -->
+  <script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><link rel="shortcut icon" type="image/png" href="https://membership.agu.org/wp-content/themes/agu-interim/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Membership Feed" href="http://membership.agu.org/feed/">
+
+  <!--  iPhone Web App Home Screen Icon -->
+  <link rel="apple-touch-icon" sizes="72x72" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-icon-ipad.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-icon-retina.png" />
+  <link rel="apple-touch-icon" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-icon.png" />
+
+  <!-- Enable Startup Image for iOS Home Screen Web App -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="apple-touch-startup-image" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-load.png" />
+
+  <!-- Startup Image iPad Landscape (748x1024) -->
+  <link rel="apple-touch-startup-image" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-load-ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
+  <!-- Startup Image iPad Portrait (768x1004) -->
+  <link rel="apple-touch-startup-image" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-load-ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+  <!-- Startup Image iPhone (320x460) -->
+  <link rel="apple-touch-startup-image" href="https://membership.agu.org/wp-content/themes/agu-interim/img/devices/agu-load.png" media="screen and (max-device-width: 320px)" />
+  
+  <!-- web fonts -->
+  <script type="text/javascript" src="//use.typekit.net/rqo5jwq.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <!--[if IE 8]><link rel="stylesheet" href="https://membership.agu.org/wp-content/themes/agu-interim/css/ie.css" /><![endif]-->
+
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.18 - http://yoast.com/wordpress/seo/ -->
+<title>AGU Abstract Browser</title>
+<link rel="canonical" href="http://membership.agu.org/join-renew/" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Membership &raquo; Feed" href="http://membership.agu.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Membership &raquo; Comments Feed" href="http://membership.agu.org/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Membership &raquo; Log In or Become an AGU Member Comments Feed" href="http://membership.agu.org/join-renew/feed/" />
+<link rel='stylesheet' id='nf-css'  href='https://membership.agu.org/wp-admin/admin-ajax.php?action=ajax_css' type='text/css' media='all' />
+<link rel='stylesheet' id='simian-dac-css'  href='https://membership.agu.org/wp-content/plugins/simian-dac/css/simian-dac.css' type='text/css' media='all' />
+<link rel='stylesheet' id='simian-dap-css'  href='https://membership.agu.org/wp-content/plugins/simian-dap/css/simian-dap.css' type='text/css' media='all' />
+<link rel='stylesheet' id='szbl-jquery-ui-css'  href='https://membership.agu.org/wp-content/plugins/agu-netforum/templates_1/css/jquery-ui.css' type='text/css' media='all' />
+<link rel='stylesheet' id='szbl-main-css-css'  href='https://membership.agu.org/wp-content/plugins/agu-netforum/templates_1/css/main.css' type='text/css' media='all' />
+<link rel='stylesheet' id='sidebar-login-css'  href='https://membership.agu.org/wp-content/plugins/sidebar-login/assets/css/sidebar-login.css' type='text/css' media='all' />
+<link rel='stylesheet' id='simian-jquery-ui-wp-css'  href='https://membership.agu.org/wp-content/plugins/smartsimian-creator/assets/css/jquery-ui.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='reverie-stylesheet-css'  href='https://membership.agu.org/wp-content/themes/agu-interim/css/style.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='reverie-ie-only-css'  href='https://membership.agu.org/wp-content/themes/agu-interim/css/ie.css' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='wp-pagenavi-css'  href='https://membership.agu.org/wp-content/plugins/wp-pagenavi/pagenavi-css.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://membership.agu.org/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='https://membership.agu.org/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript' src='https://membership.agu.org/wp-content/plugins/simian-dam/js/simian-dam.js'></script>
+<script type='text/javascript' src='https://membership.agu.org/wp-content/plugins/sidebar-login/assets/js/blockui.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sidebar_login_params = {"ajax_url":"http:\/\/membership.agu.org\/wp-admin\/admin-ajax.php","force_ssl_login":"0","force_ssl_admin":"0","is_ssl":"0","i18n_username_required":"Please enter your username","i18n_password_required":"Please enter your password","error_class":"sidebar_login_error"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://membership.agu.org/wp-content/plugins/sidebar-login/assets/js/sidebar-login.min.js'></script>
+<script type='text/javascript' src='https://membership.agu.org/wp-includes/js/comment-reply.min.js'></script>
+<script type='text/javascript' src='https://membership.agu.org/wp-content/themes/agu-interim/js/vendor/custom.modernizr.js'></script>
+<script type='text/javascript' src='https://membership.agu.org/wp-content/plugins/google-analyticator/external-tracking.min.js'></script>
+
+<!-- This site is using AdRotate v3.8.10 Professional to display their advertisements - http://www.adrotateplugin.com/ -->
+<style type="text/css">
+  #award-search, #winner-search, #fellows-search-form {
+   background: none repeat scroll 0 0 #ECF4E5;  padding: 10px;     width: 75%
+}
+
+#award-search .submit-group, #winner-search .submit-group {
+    margin-left: 150px;
+}
+
+#winner-submit {
+    background-color: #5DA423;
+    border-color: #457A1A;
+    border-radius: 1.5px 1.5px 1.5px 1.5px;
+    border-style: solid;
+    border-width: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 0 1.2em;
+    padding: .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#content .ah-result {
+    border-bottom: 1px dotted #9CD2F0;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+}
+#content .ah-result h4 a {
+  text-decoration:none;
+}
+
+#content .ah-search-info {
+  border-top:1px solid #9cd2f0;
+  border-bottom:1px solid #9cd2f0;
+  padding:5px 0;
+  margin:-14px 0 28px;
+}
+
+#content .ah-excerpt, #content .ah-excerpt p {
+  margin-top:1px;
+        line-height: 18px;
+}
+
+#content .ah-result .wp-post-image {
+  float:left;
+  margin:0 10px 1px 0;
+}
+
+.winner-topmeta em {
+  padding-right:7px;
+}
+
+#content .ah-result h4 {
+  text-transform:capitalize;
+}
+
+#latestnews-post {
+   font-size: 14px;
+   margin-bottom: 25px;
+}
+
+.blockheader5 {
+text-transform: capitalize;
+}
+
+.winner-topmeta {
+  margin-bottom: 0px;
+  font-weight: bold;
+margin-top: -7px;
+}
+
+#winner-photo {
+    float: left;
+    margin-right: 20px;
+}
+
+#winner-response {
+   margin-bottom: 20px;
+   height-line: 17px;
+   line-height: 1.5em;
+}
+
+#content .ah-excerpt, #content .ah-excerpt p {
+margin-top: 1px;
+line-height: 1.5em;
+  }</style>
+<!-- Google Analytics Tracking by Google Analyticator 6.4.5: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+  var analyticsFileTypes = ['pdf'];
+  var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-466546-19']);
+        _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google 
+        
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+<body class="page page-id-1569 page-template page-template-page-full-php">
+  <!--[if lt IE 9]> 
+<div class="row">
+  <div data-alert class="large-12 medium-12 small-12 alert-box alert">
+    Please update your browser to Internet Explorer 9 or higher for optimal viewing of this website. <a href="#" class="close">&times;</a>
+    </div>
+  </div> 
+<![endif]-->
+<header class="row show-for-medium-up" role="banner">
+  <div class="small-12 large-8 medium-4 columns">
+    <!--<h1 class="logo">--><a class="homelink" href="http://sites.agu.org/" title="AGU"><div class="logo">AGU</div></a><!--</h1>-->
+    
+    </div>
+  <div class="small-12 large-4 medium-8 columns">
+    <div class="row  utility">
+      <div class="columns small-12 large-6 medium-6">
+	
+	
+	<ul id="menu-utility-one-1" class="side-nav"><li id="menu-item-2037" class="highlighted menu-item menu-item-type-custom menu-item-object-custom menu-item-2037"><a  href="https://membership.agu.org/my-agu-login/" class="button small expand">Member Login</a></li>
+<li id="menu-item-2038" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2038"><a  href="http://onlinelibrary.wiley.com/agu/search/easi" class="button small expand">Search Pubs</a></li>
+	</ul>
+	</div>
+      <div class="columns small-12 large-6 medium-6">
+	<ul id="menu-utility-two-1" class="side-nav"><li id="menu-item-2039" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2039"><a  href="http://giving.agu.org/givingtoagu" class="button small expand">Donate</a></li>
+<li id="menu-item-2040" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2040"><a  href="https://membership.agu.org/join-renew/" class="button small expand">Join / Renew</a></li>
+	</ul></div>
+      </div>
+    <div class="row">
+      <div class="small-12 large-12 columns">
+	<!--Google Search Engine-->
+
+<form action="http://www.google.com/cse" id="cse-search-box" title="Google Search Engine">
+  <div class="row collapse searchcontainer">
+    <div class="small-9 columns">
+          <input type="hidden" name="cx" value="003993962563919752180:u-wlohjywn4" />
+	      <input type="hidden" name="ie" value="UTF-8" />
+	          <input type="text" name="q" class="googlesearch" size="20" title="Google Search Engine" />
+		  </div>
+    <div class="small-3 columns">
+      <input type="submit" name="sa" value="Search" title="Search"/ class="prefix button success go">
+      </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!--End Google Search Engine--></div>
+      </div>
+    </div>
+  
+</header>
+<nav class="row show-for-medium-up">
+  <div class="columns large-12 small-12">
+    <!--<div class="columns large-12 show-for-medium-up">-->
+    <div class="section-container auto megamenu" data-section="auto" data-options="one_up: false;">
+      
+      <section>
+	<p class="title" data-section-title><a href="#section-about">About</a></p>
+	<div class="content" data-section-content data-slug="section-about">
+	  <div class="row">
+	    <div id="text-2" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="https://sites2.agu.org/wp-content/uploads/2013/09/About-Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://about.agu.org/">About Home</a></p></div>
+	      </div><div id="nav_menu-3" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Members, Leadership, Science</h6><div class="menu-about-column-1-container"><ul id="menu-about-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2064"><a href="http://about.agu.org/members/">Members</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2208"><a href="http://about.agu.org/executive-director-ceo">Executive Director/CEO</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2066"><a href="http://about.agu.org/president/">President</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2067"><a href="http://about.agu.org/board-council/">Board and Council</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2332"><a href="http://sites.agu.org/leadership/sections-focus-groups/">Sections and Focus Groups</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2068"><a href="http://ethics.agu.org/">Scientific Ethics</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2333"><a href="http://about.agu.org/our-science/">Our Science</a></li>
+</ul></div></div><div id="nav_menu-4" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">About AGU</h6><div class="menu-about-column-2-container"><ul id="menu-about-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2213"><a href="http://about.agu.org/mission-vision/">Mission and Vision</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2214"><a href="http://about.agu.org/strategic-plan/">Strategic Plan</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2215"><a href="http://about.agu.org/our-history/">History</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2073"><a href="http://about.agu.org/annual-report/">Annual Report</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2217"><a href="http://about.agu.org/get-social/">Get Social with AGU</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2075"><a href="http://about.agu.org/agu-conference-center/">Conference Center</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2076"><a href="http://sites.agu.org/jobs/">Careers</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-membership">Membership</a></p>
+	<div class="content" data-section-content data-slug="section-membership">
+	  <div class="row">
+	    <div id="text-11" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/10/Membership-Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://membership.agu.org/">Membership Home</a></p>
+</div>
+	      </div><div id="nav_menu-15" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Membership</h6><div class="menu-membership-column-1-container"><ul id="menu-membership-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2295"><a href="https://membership.agu.org/join-renew/">Join</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2296"><a href="http://membership.agu.org/benefits/">Benefits</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2299"><a href="http://membership.agu.org/aguniverse/">AGUniverse</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2297"><a href="http://membership.agu.org/categories-dues/">Categories and Dues</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2298"><a href="http://membership.agu.org/agu-members-save-on-journal-subscriptions/">Subscriptions</a></li>
+</ul></div></div><div id="nav_menu-16" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Students</h6><div class="menu-membership-column-2-container"><ul id="menu-membership-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2300"><a href="http://education.agu.org/grants/">Grants &#038; Scholarships</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2301"><a href="http://sites.agu.org/careers/">Careers</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2302"><a href="http://membership.agu.org/ospa-winners/">Outstanding Student Paper Awards</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-leadership">Leadership</a></p>
+	<div class="content" data-section-content data-slug="section-leadership">
+	  <div class="row">
+	    <div id="text-17" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/Leadership-Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://sites.agu.org/leadership/">Leadership Home</a></p></div>
+	      </div><div id="nav_menu-20" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">In This Section</h6><div class="menu-leadership-column-1-container"><ul id="menu-leadership-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2327"><a href="http://sites.agu.org/leadership/strategic-plan/">Strategic Plan</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2078"><a href="http://sites.agu.org/leadership/bod/">Board of Directors</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2222"><a href="http://sites.agu.org/leadership/science-council/">Council</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2223"><a href="http://sites.agu.org/leadership/committees/">Committees</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2080"><a href="http://sites.agu.org/leadership/governing-documents/">Governing Documents</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2328"><a href="http://sites.agu.org/leadership/elections/">Elections</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2329"><a href="http://sites.agu.org/leadership/volunteer/">Volunteer</a></li>
+</ul></div></div><div id="nav_menu-19" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Information On</h6><div class="menu-leadership-column-2-container"><ul id="menu-leadership-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2081"><a href="http://sites.agu.org/leadership/strategic-plan/goals-objectives/">Strategic Goals and Objectives</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2225"><a href="http://about.agu.org/annual-report/">Annual Reports</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2082"><a href="http://about.agu.org/president/">President</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2226"><a href="http://sites.agu.org/leadership/bod/board-members/">Board Members</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2083"><a href="http://sites.agu.org/leadership/science-council/council-members/">Council Members</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2330"><a href="http://sites.agu.org/leadership/sections-focus-groups/">Sections &#038; Focus Groups</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2529"><a href="http://sites.agu.org/leadership/agu-bylaws-comment-period/">Bylaws Update</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-publications">Publications</a></p>
+	<div class="content" data-section-content data-slug="section-publications">
+	  <div class="row">
+	    <div id="text-19" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/Publications-Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://publications.agu.org/">Publications Home</a></p></div>
+	      </div><div id="nav_menu-24" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Publications</h6><div class="menu-publications-column-1-container"><ul id="menu-publications-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2347"><a href="http://publications.agu.org/journals/">Journals</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2348"><a href="http://publications.agu.org/books/">Books</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2349"><a href="http://publications.agu.org/eos/"><span><em>Eos</em></span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2454"><a href="http://publications.agu.org/author-resource-center/submissions/">Submit a Paper</a></li>
+</ul></div></div><div id="nav_menu-23" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Resources</h6><div class="menu-publications-column-2-container"><ul id="menu-publications-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2416"><a href="http://publications.agu.org/journals/editors/">Editors</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2350"><a href="http://publications.agu.org/author-resource-center/">Author Resources</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2351"><a href="http://olabout.wiley.com/WileyCDA/Section/id-404513.html">Librarian Resources</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2352"><a href="http://publications.agu.org/publications-contacts/">Publications Contacts</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-meetings">Meetings</a></p>
+	<div class="content" data-section-content data-slug="section-meetings">
+	  <div class="row">
+	    <div id="text-16" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/10/Meetings-Nav-image.jpg" />
+<p style="text-align: center;"><a href="http://meetings.agu.org/">Meetings Home</a></p></div>
+	      </div><div id="nav_menu-18" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Programs</h6><div class="menu-meetings-column-1-container"><ul id="menu-meetings-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2303"><a href="http://chapman.agu.org/">Chapman Conferences</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2304"><a href="http://fallmeeting.agu.org/">Fall Meeting</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2314"><a href="http://www.sgmeet.com/osm2014/default.asp">Ocean Sciences Meeting</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2306"><a href="http://spc.agu.org/">Science Policy Conference</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2307"><a href="http://meetings.agu.org/partnerships">Societal Partnerships</a></li>
+</ul></div></div><div id="nav_menu-17" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Resources</h6><div class="menu-meetings-column-2-container"><ul id="menu-meetings-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2311"><a href="http://meetings.agu.org/abstract_db/">Abstract Database</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2382"><a href="http://geocalendar.agu.org/">AGU GeoCalendar</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2383"><a href="http://chapman.agu.org/past-chapman-conferences/">Chapman Archive</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2310"><a href="http://meetings.agu.org/session-abstract/">Guidelines</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2309"><a href="http://meetings.agu.org/lv_archive/">Lecture Video Archive</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2308"><a href="http://meetings.agu.org/meeting-archive/">Meeting Archive</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2312"><a href="http://meetings.agu.org/visas/">Visa Information</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-career-center">Career Center</a></p>
+	<div class="content" data-section-content data-slug="section-career-center">
+	  <div class="row">
+	    <div id="text-18" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/Career-Center-Nav-image" alt="" />
+<p style="text-align: center;"><a href="http://sites.agu.org/careers/">Careers Home</a></p></div>
+	      </div><div id="nav_menu-22" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Learn More About</h6><div class="menu-career-center-column-1-container"><ul id="menu-career-center-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2334"><a href="http://sites.agu.org/careers/paths-through-science/">Paths Through Science</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2335"><a href="http://sites.agu.org/careers/careers-in-science/geoscience-careers/">Careers in the Geosciences</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2336"><a href="http://sites.agu.org/careers/careers-in-science/geoscience-workforce-research/">The Geoscience Workforce</a></li>
+</ul></div></div><div id="nav_menu-21" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Resources</h6><div class="menu-career-center-column-2-container"><ul id="menu-career-center-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2337"><a href="http://careers.agu.org/jobs/">Search for Jobs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2338"><a href="http://careers.agu.org/post.cfm">Search for Candidates</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2339"><a href="http://sites.agu.org/careers/career-advice-webinars/">Webinars</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2340"><a href="http://sites.agu.org/careers/career-advice-workshops/">Workshops</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2341"><a href="http://sites.agu.org/careers/careers-in-science/phd-granting-institutions/">Ph.D. Granting Institutions</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2413"><a href="http://sites.agu.org/careers/category/careertoolkit/">Career Toolkit</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-honors-program">Honors Program</a></p>
+	<div class="content" data-section-content data-slug="section-honors-program">
+	  <div class="row">
+	    <div id="text-15" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/Honors-Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://honors.agu.org/">Honors Program Home</a></p></div>
+	      </div><div id="nav_menu-13" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">AGU Honors</h6><div class="menu-honors-column-1-container"><ul id="menu-honors-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2287"><a href="http://honors.agu.org/awards-medals-prizes/">Union Awards, Medals, &#038; Prizes</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2286"><a href="http://honors.agu.org/fellows/">Union Fellows</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2289"><a href="http://honors.agu.org/section-and-focus-group-awards/">Section and Focus Group Awards/Lectures</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2418"><a href="http://honors.agu.org/bowie-lectures/">Bowie Lectures</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2290"><a href="http://membership.agu.org/ospa-winners/">Outstanding Students Paper Awards</a></li>
+</ul></div></div><div id="nav_menu-14" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Information On</h6><div class="menu-honors-column-2-container"><ul id="menu-honors-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2420"><a href="http://honors.agu.org/agu-conflict-of-interest-policy-union-sections-focus-groups-fellows-medals-awards-prizes-lectures-program-selection-committees/">Conflict of Interest Policy</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2294"><a href="http://honors.agu.org/nominations-requirements/">Nomination Requirements</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2291"><a href="http://honors.agu.org/timelines/">Timelines</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2292"><a href="http://honors.agu.org/faqs/">FAQs</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-science-policy">Science Policy</a></p>
+	<div class="content" data-section-content data-slug="section-science-policy">
+	  <div class="row">
+	    <div id="text-13" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/SciPol_Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://sciencepolicy.agu.org/">Science Policy Home</a></p></div>
+	      </div><div id="nav_menu-9" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Learn More</h6><div class="menu-science-policy-column-1-container"><ul id="menu-science-policy-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2570"><a href="http://sciencepolicy.agu.org/">Science Policy Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2271"><a href="http://sciencepolicy.agu.org/federal-budget/">Federal Budget</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2272"><a href="http://spc.agu.org/">Science Policy Conference</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2273"><a href="http://sciencepolicy.agu.org/one-source/">Resources for Policy Makers</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2274"><a href="http://sharingscience.agu.org/">Resources for Scientists</a></li>
+</ul></div></div><div id="nav_menu-10" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Be Involved</h6><div class="menu-science-policy-column-2-container"><ul id="menu-science-policy-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2276"><a href="http://sciencepolicy.agu.org/congressional_fellows/">Congressional Science Fellowship</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2277"><a href="https://app7.vocusgr.com/WebPublish/controller.aspx?SiteName=AGU&#038;Definition=Home&#038;SV_Section=Home">Contact Your Legislator</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2278"><a href="http://sharingscience.agu.org/aeon/">Join the Expert Outreach Network</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2279"><a href="http://sciencepolicy.agu.org/sign-up-for-agu-science-policy-alerts/">Sign up for AGU Science Policy Alerts</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-education">Education</a></p>
+	<div class="content" data-section-content data-slug="section-education">
+	  <div class="row">
+	    <div id="text-14" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/Education-Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://education.agu.org/">Education Home</a></p></div>
+	      </div><div id="nav_menu-11" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Information For</h6><div class="menu-education-column-1-container"><ul id="menu-education-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2280"><a href="http://education.agu.org/students/">Students</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2281"><a href="http://education.agu.org/teachers/">Teachers</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2282"><a href="http://education.agu.org/professionals/">Professionals</a></li>
+</ul></div></div><div id="nav_menu-12" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Education Programs</h6><div class="menu-education-column-2-container"><ul id="menu-education-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2283"><a href="http://education.agu.org/diversity-programs/">Diversity Programs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2284"><a href="http://education.agu.org/education-activities-at-agu-meetings/">Fall Meeting Events</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2285"><a href="http://education.agu.org/grants/">Grants</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      <section>
+	<p class="title" data-section-title><a href="#section-newsroom">Newsroom</a></p>
+	<div class="content" data-section-content data-slug="section-newsroom">
+	  <div class="row">
+	    <div id="text-12" class="columns small-12 medium-4 large-4 widget widget_text"><div class="textwidget"><img src="/wp-content/uploads/2013/09/Newsroom_Nav-image.jpg" alt="" />
+<p style="text-align: center;"><a href="http://news.agu.org/">Newsroom Home</a></p></div>
+	      </div><div id="nav_menu-7" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">News</h6><div class="menu-newsroom-column-1-container"><ul id="menu-newsroom-column-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2264"><a href="http://news.agu.org/press-releases/">Press Releases</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2265"><a href="http://news.agu.org/journal_highlights/">Journal Highlights</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2415"><a href="http://news.agu.org/mass-media-fellowship/">Mass Media Fellowship</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2266"><a href="http://blogs.agu.org/">AGU Blogsphere</a></li>
+</ul></div></div><div id="nav_menu-8" class="columns small-12 medium-4 large-4 widget widget_nav_menu"><h6 class="widgettitle">Services for Journalists</h6><div class="menu-newsroom-column-2-container"><ul id="menu-newsroom-column-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2267"><a href="http://news.agu.org/press-release-signup/">Sign up for Press Releases</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2268"><a href="http://news.agu.org/accessing-cited-papers/">Access AGU Journal Papers</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2269"><a href="http://news.agu.org/feed/?post_type=press_release">RSS Feed</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2583"><a href="http://news.agu.org/agu-press-subscriptions/">Register For Journal Paper Access</a></li>
+	    </ul></div></div></div>
+	</div>
+	</section>
+      
+      </div>
+    </div>
+</nav>
+
+<div class="contain-to-grid show-for-small">
+  <!-- Starting the Top-Bar -->
+  <nav class="top-bar">
+        <ul class="title-area">
+	          <li class="name">
+		    <h1><a href="/" title="AGU" rel="home">AGU</a></h1>
+		            </li>
+		  <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+		  <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		      </ul>
+	    <section class="top-bar-section">
+	      <ul class="right">
+		<li class="hide-for-small"></li>
+		<li class="has-form"><!--Google Search Engine-->
+
+<form action="http://www.google.com/cse" id="cse-search-box" title="Google Search Engine">
+  <div class="row collapse searchcontainer">
+    <div class="small-9 columns">
+          <input type="hidden" name="cx" value="003993962563919752180:u-wlohjywn4" />
+	      <input type="hidden" name="ie" value="UTF-8" />
+	          <input type="text" name="q" class="googlesearch" size="20" title="Google Search Engine" />
+		  </div>
+    <div class="small-3 columns">
+      <input type="submit" name="sa" value="Search" title="Search"/ class="prefix button success go">
+      </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!--End Google Search Engine--></li>
+		</ul>
+	          <ul class="left"><li class="divider"></li><li id="menu-item-2343" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2343"><a  href="https://membership.agu.org/my-agu-login/">Member Login</a></li>
+<li class="divider"></li><li id="menu-item-2344" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2344"><a  href="http://onlinelibrary.wiley.com/agu/search/easi">Search Pubs</a></li>
+<li class="divider"></li><li id="menu-item-2345" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2345"><a  href="http://giving.agu.org/">Donate</a></li>
+<li class="divider"></li><li id="menu-item-2346" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2346"><a  href="http://membership.agu.org/">Join AGU</a></li>
+<li class="divider"></li><li id="menu-item-2316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2316"><a  href="http://about.agu.org/">About</a></li>
+<li class="divider"></li><li id="menu-item-2317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2317"><a  href="http://membership.agu.org/">Membership</a></li>
+<li class="divider"></li><li id="menu-item-2318" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2318"><a  href="http://sites.agu.org/leadership/">Leadership</a></li>
+<li class="divider"></li><li id="menu-item-2319" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2319"><a  href="http://publications.agu.org/">Publications</a></li>
+<li class="divider"></li><li id="menu-item-2320" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2320"><a  href="http://meetings.agu.org/">Meetings</a></li>
+<li class="divider"></li><li id="menu-item-2321" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2321"><a  href="http://sites.agu.org/careers/">Career Center</a></li>
+<li class="divider"></li><li id="menu-item-2322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2322"><a  href="http://honors.agu.org/">Honors Program</a></li>
+<li class="divider"></li><li id="menu-item-2323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2323"><a  href="http://sciencepolicy.agu.org/">Science Policy</a></li>
+<li class="divider"></li><li id="menu-item-2324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2324"><a  href="http://education.agu.org/">Education</a></li>
+<li class="divider"></li><li id="menu-item-2325" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2325"><a  href="http://news.agu.org/">Newsroom</a></li>
+		  </ul>    
+		      </section>
+	    </nav>
+  <!-- End of Top-Bar -->
+</div>
+
+<!-- Start the main container -->
+<div class="row">
+<div style="float:left;width:18%" class="columns">
+{%include "../../includes/nav.wordpress.inc"%}
+</div>
+<div style="float:right;width:82%" class="columns">
