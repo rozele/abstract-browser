@@ -39,7 +39,7 @@ else
 
 	# Log into Virtuoso isql env
 	isql_cmd="/usr/bin/isql 1111 dba"
-	isql_pwd="@bstr@ct2012"  # default admin password, may neeed to change
+	isql_pwd="dba"  # default admin password, may neeed to change
 
 	# Call Virtuoso loading functions for different input formats
 	load_func=""
