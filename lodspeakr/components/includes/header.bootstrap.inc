@@ -137,7 +137,7 @@
                 <!--<li><a href="{{lodspk.home}}people">Authors</a></li>-->
                 <li><a href="{{lodspk.home}}sections">Sections</a></li>
                 <li><a href="{{lodspk.home}}keywords">Index Terms</a></li>
-                <li><a href="{{lodspk.home}}dbsearch.php">Advanced Search</a></li>
+                <!--<li><a href="{{lodspk.home}}dbsearch.php">Advanced Search</a></li>-->
               </ul>
               <form class="navbar-search pull-left" action="{{lodspk.home}}dbsearch.php">
                 <input type="text" data-provide="typeahead" name="q[]" class="typeahead search-query span2" placeholder="Quick Search"/>
