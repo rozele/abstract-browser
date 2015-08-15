@@ -23,7 +23,7 @@ else
 
     # Log into Virtuoso isql env
     isql_cmd="/usr/bin/isql 1111 dba"
-    isql_pwd="dba"  # default admin password, may need to change
+    isql_pwd="@bstracts2015"  # default admin password, may need to change
 
     # Call SPARQL CLEAR to delete named graphs
     sparql_delete="SPARQL CLEAR GRAPH <$graph_uri>;"

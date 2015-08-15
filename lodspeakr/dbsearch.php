@@ -106,7 +106,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="http://abstractsearch.agu.org/"><span>AGU Abstract Browser <sub>Beta</sub></span></a>
+            <a class="brand" href="http://abstractsearch.agu.org/"><span>AGU Abstract Browser</span></a>
             <div class="nav-collapse">
               <ul class="nav">
                 <li><a href="http://abstractsearch.agu.org/">About</a></li>
@@ -116,7 +116,7 @@
                 <!--<li><a href="http://abstractsearch.agu.org/people">Authors</a></li>-->
                 <li><a href="http://abstractsearch.agu.org/sections">Sections</a></li>
                 <li><a href="http://abstractsearch.agu.org/keywords">Index Terms</a></li>
-                <li><a href="http://abstractsearch.agu.org/dbsearch.php">Advanced Search</a></li>
+                <!--<li><a href="http://abstractsearch.agu.org/dbsearch.php">Advanced Search</a></li>-->
               </ul>
               <form class="navbar-search pull-left" action="">
                 <input type="text" data-provide="typeahead" name="q[]" class="typeahead search-query span2" placeholder="Quick Search"/>

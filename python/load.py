@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(description='AGU Meeting RDF Loader')
 parser.add_argument(dest='dir', nargs=1, help='specify input file or directory')
 parser.add_argument(dest='version', nargs='?', default='2.0', help='set the version number for the graphs')
 parser.add_argument(dest='base', nargs='?', default='http://abstractsearch.agu.org/graphs', help='set the base URI for graphs created')
-parser.add_argument(dest='script', nargs='?', default='/opt/virtuoso/scripts/vload', help='set the script used to load RDF')
+parser.add_argument(dest='script', nargs='?', default='../utils/virtuoso/vload', help='set the script used to load RDF')
 parser.add_argument(dest='ext', nargs='?', default='ttl', help='set the extension (not yet working)')
 args = parser.parse_args()
 
