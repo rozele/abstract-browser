@@ -20,6 +20,10 @@ import codecs
 import re
 import os
 
+import sys
+reload(sys)
+sys.setdefaultencoding('UTF8')
+
 """
 MeetingStream class parses AGU .txt files for meeting abstracts
 Iterates over chunks of the document delimited by HTML comment lines
@@ -74,13 +78,13 @@ class MeetingStream(object):
 def parse_meeting(i,o,abbr,ext="ttl"):
 	ofile = o + abbr + '.' + ext
 	mtg = Meeting(abbr)
-	mstream = MeetingStream(open(i,"r"),mtg)
+	mstream = MeetingStream(codecs.open(i,"r","utf-8"),mtg)
 	ostream = codecs.open(ofile,"w","utf-8")
-	ostream.write(unicode(meetingSerializer.serialize(mtg),errors="replace"))
+	ostream.write(meetingSerializer.serialize(mtg))
 	for session in mstream.get_sessions():
-		ostream.write(unicode(sessionSerializer.serialize(session),errors="replace"))
+		ostream.write(sessionSerializer.serialize(session))
 		for abstract in session.abstracts:
-			ostream.write(unicode(abstractSerializer.serialize(abstract),errors="replace"))
+			ostream.write(abstractSerializer.serialize(abstract))
 	ostream.close()
 
 def get_args():
