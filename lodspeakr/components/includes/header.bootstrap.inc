@@ -127,7 +127,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="{{lodspk.home}}"><span>{{lodspk.betaTitle|urldecode}}</span></a>
+            <a class="brand" href="{{lodspk.home}}"><span>{{lodspk.title|urldecode}}</span></a>
             <div class="nav-collapse">
               <ul class="nav">
                 <li><a href="{{lodspk.home}}">About</a></li>
