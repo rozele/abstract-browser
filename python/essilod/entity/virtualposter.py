@@ -45,6 +45,7 @@ mapping = {
     "identifier" : {
         "type" : "literal",
         "predicate" : "http://purl.org/dc/terms/identifier"
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
     },
     "authors" : {
         "type" : "object",

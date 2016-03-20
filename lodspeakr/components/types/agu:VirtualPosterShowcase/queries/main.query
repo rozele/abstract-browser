@@ -2,7 +2,7 @@ SELECT DISTINCT ?year ?title ?thumbnail ?index
 WHERE {
   {%include "../../../includes/graphs.inc"%}
   GRAPH ?graph {
-    <{{uri}}> a swrc:VirtualPosterShowcase ;
+    <{{uri}}> a agu:VirtualPosterShowcase ;
       swrc:year ?year ;
       swrc:eventTitle ?title ;
       agu:showcaseIndex ?index .

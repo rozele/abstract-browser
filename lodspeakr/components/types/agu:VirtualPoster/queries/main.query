@@ -1,7 +1,7 @@
 SELECT DISTINCT ?title ?id ?text ?meeting ?meetingTitle ?meetingYear ?division ?citation ?withdrawn
 WHERE {
   {%include "../../../includes/graphs.inc"%}
-  GRAPH ?g {
+  GRAPH ?graph {
     <{{uri}}> a agu:VirtualPoster ;
       swc:relatedToEvent ?meeting ;
       swrc:abstract ?text ;
@@ -9,7 +9,7 @@ WHERE {
       agu:division ?division .
 
     ?meeting swrc:eventTitle ?meetingTitle ;
-      swrc:meetingYear ?year .
+      swrc:year ?year .
 
     OPTIONAL { <{{uri}}> dcterms:identifier ?id . }
   }

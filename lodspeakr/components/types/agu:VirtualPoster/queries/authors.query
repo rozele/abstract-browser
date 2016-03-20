@@ -1,8 +1,8 @@
 SELECT DISTINCT ?role (MAX(?pname) as ?name) ?isPresenter
 WHERE {
   {%include "../../../includes/graphs.inc"%}
-  GRAPH ?g1 {
-    <{{uri}}> a agu:Abstract ;
+  GRAPH ?graph {
+    <{{uri}}> a agu:VirtualPoster ;
       tw:hasAgentWithRole ?role .
     ?role a tw:Author ;
       tw:index ?index .

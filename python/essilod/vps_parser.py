@@ -23,7 +23,7 @@ Uses SessionSummary subclass to extract data
 
 def parse_person(row, index):
     person = Person()
-    person.name = "%s, %s" % (row[index+2],row[index+1])
+    person.name = "%s %s" % (row[index+1],row[index+2])
     person.email = row[index+4] if row[index+4] != '' else None
     return person
 

@@ -1,6 +1,7 @@
 {%include "../../includes/header.inc"%}
   {% if lodspk.args.arg2 %}
     {%if lodspk.args.arg2 == "divisions" %}
+      <h3>{{lodspk.args.arg3|urldecode}} Abstracts</h3>
       <ul>
       {% for row in models.posters %}
         <li><a href="{{ row.resource.value }}">[{{row.id.value}}] {{row.title.value|urldecode}}</a></li>
