@@ -39,7 +39,7 @@
           {% endfor %}
           </ol>
         {%else%}
-          {%if lodspk.args.arg3 && models.sessions|length == 0 %}
+          {%if lodspk.args.arg3 && models.sections|length == 0 %}
             {%include "../../includes/service-error.inc"%}
           {%else%}
             {% for row in models.sections %}

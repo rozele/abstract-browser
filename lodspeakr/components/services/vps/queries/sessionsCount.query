@@ -1,0 +1,13 @@
+SELECT COUNT(DISTINCT ?resource) as ?count
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?meeting agu:meetingCode "{{lodspk.args.arg1}}"^^xsd:string .
+    ?meeting swrc:year ?year . 
+    FILTER regex(?year,"^{{lodspk.args.arg0}}")
+    ?resource swc:isSubEventOf ?meeting .
+    ?resource a swc:SessionEvent .
+    ?resource agu:section ?section .
+  }
+  ?section dcterms:identifier "{{lodspk.args.arg3}}"^^xsd:string .
+}

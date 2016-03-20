@@ -77,6 +77,7 @@ config = {
 		"os" : "Ocean Sciences Meeting",
 		"wp" : "Western Pacific Geophysics Meeting",
 		"sm" : "Joint Assembly",
+        "vps" : "Virtual Poster Showcase",
 	},
 	"section_codes" : {
 		"U" : "Union",
