@@ -1,0 +1,17 @@
+SELECT DISTINCT ?resource  MAX(?myear) as ?year ?title ?thumbnail ?index
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?resource a agu:VirtualPosterShowcase .
+  }
+  ?resource swrc:year ?myear ;
+    swrc:eventTitle ?title ;
+    agu:showcaseIndex ?index .
+  OPTIONAL { ?resource foaf:thumbnail ?thumbnail . }
+  {% if lodspk.args.arg0 %}
+  FILTER regex(?myear, "^{{lodspk.args.arg0}}") .
+  {%endif%}
+}
+GROUP BY ?resource ?title ?thumbnail ?index
+ORDER BY desc(?year) ?index
+LIMIT {{lodspk.maxResults}}

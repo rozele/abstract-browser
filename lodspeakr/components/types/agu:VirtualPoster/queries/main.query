@@ -1,0 +1,19 @@
+SELECT DISTINCT ?title ?id ?text ?meeting ?meetingTitle ?meetingYear ?division ?citation ?withdrawn
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a agu:VirtualPoster ;
+      swc:relatedToEvent ?meeting ;
+      swrc:abstract ?text ;
+      dcterms:title ?title ;
+      agu:division ?division .
+
+    ?meeting swrc:eventTitle ?meetingTitle ;
+      swrc:year ?meetingYear .
+
+    OPTIONAL { <{{uri}}> dcterms:identifier ?id . }
+  }
+  OPTIONAL { ?meeting agu:citationStyle ?citation . }
+  OPTIONAL { <{{uri}}> agu:withdrawn ?withdrawn . }
+}
+LIMIT 1

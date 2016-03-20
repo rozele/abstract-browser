@@ -113,6 +113,7 @@
                 <!--<li><a href="http://abstractsearch.agu.org/classes">Classes</a></li>-->
                 <!--<li><a href="http://abstractsearch.agu.org/namedGraphs">Named Graphs</a></li>-->
                 <li><a href="http://abstractsearch.agu.org/meetings">Meetings</a></li>
+                <li><a href="http://abstractsearch.agu.org/vps">Virtual Posters</a></li>
                 <!--<li><a href="http://abstractsearch.agu.org/people">Authors</a></li>-->
                 <li><a href="http://abstractsearch.agu.org/sections">Sections</a></li>
                 <li><a href="http://abstractsearch.agu.org/keywords">Index Terms</a></li>

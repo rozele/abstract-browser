@@ -1,0 +1,13 @@
+SELECT DISTINCT ?role (MAX(?pname) as ?name)
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a agu:VirtualPoster ;
+      tw:hasAgentWithRole ?role .
+    ?role a tw:Researcher .
+    ?person tw:hasRole ?role ;
+      foaf:name ?pname .
+  }
+}
+GROUP BY ?role
+LIMIT 1

@@ -1,0 +1,11 @@
+SELECT DISTINCT ?poster ?title ?person ?personname
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    ?poster tw:hasAgentWithRole <{{uri}}> ;
+      dcterms:title ?title .
+    ?person tw:hasRole <{{uri}}> ;
+      foaf:name ?personname .
+  }
+}
+LIMIT 1

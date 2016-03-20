@@ -1,4 +1,4 @@
-SELECT DISTINCT ?id ?title ?resource ?meeting ?code ?year
+SELECT DISTINCT ?id ?title ?resource ?meeting ?code ?year ?index
 WHERE {
   {%include "../../../includes/duo-graphs.inc"%}
   GRAPH ?g1 {
@@ -8,14 +8,13 @@ WHERE {
   <{{uri}}> tw:hasRole ?role .
   ?resource dcterms:title ?title ;
     dcterms:identifier ?id .
-  ?resource a agu:Abstract .
-  ?resource swc:relatedToEvent ?session .
-  ?session swc:isSubEventOf ?meeting .
+  ?resource a agu:VirtualPoster .
+  ?resource swc:relatedToEvent ?meeting .
   GRAPH ?g2 {
     ?meeting swrc:year ?year .
   }
-  ?meeting swrc:startDate ?start ;
+  ?meeting agu:showcaseIndex ?index ;
     agu:meetingCode ?code .
 }
-ORDER BY desc(?start)
+ORDER BY desc(?index)
 LIMIT {{lodspk.maxResults}}

@@ -1,0 +1,10 @@
+{%include "../../includes/header.inc"%}
+    <h2>{{first.main.year.value|substr:"0,4"}} {{first.main.title.value}}</h2>
+    <h3><a style="color:black" href="{{first.main.code.value}}/sections">Virtual Poster Divisions</a></h3>
+    <p>See all the abstracts for each division of the AGU Virtual Poster Showcase.</p>
+    <ul>
+    {% for row in models.divisions %}
+    <li><a href="/vps/{{first.main.year.value|substr:"0,4"}}/{{first.main.index.value}}/divisions/{{row.name.value|urlencode}}">{{row.name.value}}</a></li>
+    {% endfor %}
+    </ul>
+{%include "../../includes/footer.inc"%}

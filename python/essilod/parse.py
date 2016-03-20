@@ -71,13 +71,12 @@ def parse_meeting(i,o,abbr,ext="ttl"):
 def get_meeting_files(indir):	
 	for f in os.listdir(indir):
 		if f.endswith(".txt"):
-			directory = indir + '/' if not indir.endswith('/') else indir
-			yield directory + f
+			yield os.path.join(indir, f)
 
 def get_args():
 	parser = argparse.ArgumentParser(description='AGU Meeting File Parser')
-	parser.add_argument(dest='input', nargs=1, help='specify input file or directory')
-	parser.add_argument(dest='output', nargs='?', help='specify output file or directory')
+	parser.add_argument(dest='input', nargs=1, help='specify input directory')
+	parser.add_argument(dest='output', nargs='?', help='specify output directory')
 	parser.add_argument(dest='ext', nargs='?', default='ttl', help='set the extension (not yet working)')
 	parser.add_argument('--keywords', action='store_true', help='compute keyword static mappings')
 	parser.add_argument('--sections', action='store_true', help='compute session static mappings')
