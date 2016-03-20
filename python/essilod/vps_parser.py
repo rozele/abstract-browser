@@ -102,6 +102,12 @@ def parse_vps(i,o,abbr,ext="ttl"):
                         ostream.write(posterSerializer.serialize(poster))
                     else:
                         estream.write(row)
+                for index in vpss:
+                    vps = vpss[index]
+                    if (isinstance(vps,VirtualPosterShowcase)):
+                        ostream.write(showcaseSerializer.serialize(vps))
+                    else:
+                        estream.write(vps)
                         
 def get_args():
     parser = argparse.ArgumentParser(description='AGU Meeting File Parser')

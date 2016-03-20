@@ -36,9 +36,10 @@ mapping = {
 		"datatype" : "http://www.w3.org/2001/XMLSchema#string",
 		"lang" : "en"
 	},
-	"identifier" : {
+	"index" : {
 		"type" : "literal",
-		"predicate" : "http://purl.org/dc/terms/identifier"
+		"predicate" : "http://abstractsearch.agu.org/ontology#showcaseIndex",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#int"
 	},
 	"year" : {
 		"type" : "literal",
