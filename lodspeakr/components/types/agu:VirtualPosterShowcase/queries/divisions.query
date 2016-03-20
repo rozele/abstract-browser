@@ -1,0 +1,12 @@
+SELECT DISTINCT ?name
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?graph {
+    <{{uri}}> a agu:VirtualPosterShowcase .
+  }
+  ?poster swc:relatedToEvent <{{uri}}> .
+  ?poster a agu:VirtualPoster .
+  ?poster agu:division ?name .
+}
+ORDER BY ?id
+LIMIT {{lodspk.maxResults}}

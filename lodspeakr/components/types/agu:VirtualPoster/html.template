@@ -1,0 +1,29 @@
+{%include "../../includes/header.inc"%}
+    <h2>{{first.main.title.value|urldecode}}</h2>
+    <h3>Details</h3>
+    <table class="table table-striped">
+    <tr><td><b>Showcase</b></td><td><a href="{{first.main.meeting.value}}">{{first.main.meetingYear.value|substr:"0,4"}} {{first.main.meetingTitle.value}}</a></td></tr>
+    <tr><td><b>Identifier</b></td><td>{{first.main.id.value}}</td></tr>
+    <tr><td><b>Authors</b></td>
+      <td>
+      {% for row in models.authors %}
+      {% if row.isPresenter.value == 1 %}{% set presenter = "*" %}
+      {% else %}{% set presenter = "" %}
+      {%endif%}
+      {% if !forloop.first %}</br>{%endif%}<a href="{{row.role.value}}">{{row.name.value|urldecode}}{{presenter}}{% for orgRow in models.affiliations %}{% if orgRow.role.value == row.role.value %}, {{orgRow.organization.value|urldecode}}{%endif%}{% endfor %}</a>
+      {% endfor %}
+      </td>
+    </tr>
+    </table>
+    <h3>Abstract</h3>
+    {% if first.main.withdrawn.value %}
+    <div>
+    <p>This abstract has been withdrawn. Please contact AGU for further information.</p>
+    </div>
+    {%else%}
+    <div>
+    <p>{{first.main.text.value|urldecode}}</p>
+    {% if first.main.citation %}<p><b>Cite as:</b> {{first.main.citation.value|urldecode|replaceid:first.main.id.value}}</p>{%endif%}
+    </div>
+    {%endif%}
+{%include "../../includes/footer.inc"%}

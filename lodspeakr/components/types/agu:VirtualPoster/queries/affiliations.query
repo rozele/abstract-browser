@@ -1,0 +1,11 @@
+SELECT DISTINCT ?role ?organization
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  GRAPH ?g {
+    <{{uri}}> a agu:VirtualPoster ;
+      tw:hasAgentWithRole ?role .
+    ?role tw:withAffiliation ?orgentity .
+    ?orgentity dcterms:description ?organization .
+  }
+}
+LIMIT {{lodspk.maxResults}}
