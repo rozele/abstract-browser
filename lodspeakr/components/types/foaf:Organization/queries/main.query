@@ -1,9 +1,0 @@
-SELECT DISTINCT ?name
-WHERE {
-  {%include "../../../includes/graphs.inc"%}
-  GRAPH ?graph {
-    <{{uri}}> a foaf:Organization .
-  } 
-  <{{uri}}> dcterms:description ?name .
-}
-LIMIT 1

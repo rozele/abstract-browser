@@ -1,9 +1,0 @@
-{%include "../../includes/header.inc"%}
-    <h2>{{first.main.title.value}}</h2>
-    <table class="table table-striped" about="{{uri}}">
-      <tr><td><b>Person</b></td><td><a href="{{first.main.person.value}}">{{first.main.personname.value}}</a></td>
-      {% if first.main.organization %}<tr><td><b>Affiliation</b></td><td><a href="{{first.main.organization.value}}">{{first.main.orgname.value}}</a></td>{%endif%}
-      <tr><td><b>Session</b></td><td><a href="{{first.main.session.value}}">{{first.main.sessiontitle.value}}</a></td>
-      <tr><td><b>Convener Index</b></td><td>{{first.main.index.value}}</td>
-    </table>
-{%include "../../includes/footer.inc"%}

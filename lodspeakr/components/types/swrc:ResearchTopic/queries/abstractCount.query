@@ -1,8 +1,0 @@
-SELECT COUNT(DISTINCT ?resource) as ?count
-WHERE {
-  {%include "../../../includes/graphs.inc"%}
-  GRAPH ?g1 {
-    ?resource a agu:Abstract .
-  }
-  ?resource swc:hasTopic <{{uri}}> .
-}
