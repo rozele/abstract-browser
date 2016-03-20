@@ -9,7 +9,7 @@ WHERE {
       agu:division ?division .
 
     ?meeting swrc:eventTitle ?meetingTitle ;
-      swrc:year ?year .
+      swrc:year ?meetingYear .
 
     OPTIONAL { <{{uri}}> dcterms:identifier ?id . }
   }

@@ -2,7 +2,7 @@
     <h2>{{first.main.title.value|urldecode}}</h2>
     <h3>Details</h3>
     <table class="table table-striped">
-    <tr><td><b>Showcase</b></td><td><a href="{{first.main.meeting.value}}">{{first.main.meetingYear.value|substr:"0,4"}} {{first.main.meetingTitle.value}}</a></td></tr>
+    <tr><td><b>Meeting</b></td><td><a href="{{first.main.meeting.value}}">{{first.main.meetingYear.value|substr:"0,4"}} {{first.main.meetingTitle.value}}</a></td></tr>
     <tr><td><b>Identifier</b></td><td>{{first.main.id.value}}</td></tr>
     <tr><td><b>Authors</b></td>
       <td>
@@ -14,6 +14,9 @@
       {% endfor %}
       </td>
     </tr>
+    {% if first.researcher.role %}
+    <tr><td><b>Researcher</b></td><td><a href="{{first.researcher.role.value}}">{{first.researcher.name.value|urldecode}}{% for orgRow2 in models.affiliations %}{% if orgRow2.role.value == first.researcher.role.value %}, {{orgRow2.organization.value|urldecode}}{%endif%}{% endfor %}</a>
+    {%endif%}
     </table>
     <h3>Abstract</h3>
     {% if first.main.withdrawn.value %}
