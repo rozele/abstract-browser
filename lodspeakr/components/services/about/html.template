@@ -57,7 +57,7 @@
 <li><a href="{{lodspk.home}}meetings">Meeting-at-a-Glance</a> - The Meeting-at-a-Glance experience has been reworked to leverage the power of linked data, providing the ability to follow links to various entities, including meetings, sections, sessions, authors, organizations, and index terms, in order to discover related work.</li>
 <li><a href="{{lodspk.home}}sections">Sections pages</a> - Start looking for sessions from the AGU section you most closely identify with the new Sections pages.</li>
 <li><a href="{{lodspk.home}}keywords">Index Terms pages</a> - Start looking for abstracts tagged with index terms that you are interested in from the new Index Term pages.</li>  
-<li><a href="{{lodspk.home}}dbsearch.php">Advanced Search</a> - Use the boolean Advanced Search interface for a more fine-grained abstract search experience.</li>
+<!--<li><a href="{{lodspk.home}}dbsearch.php">Advanced Search</a> - Use the boolean Advanced Search interface for a more fine-grained abstract search experience.</li>-->
 </ul>
 Or, find abstracts from the <a href="{{first.latest.resource.value}}">{{first.latest.year.value|substr:"0,4"}} {{first.latest.title.value}}</a>.</p>
 <p>The AGU Abstract Browser is based on <a href="http://en.wikipedia.org/wiki/Linked_Data">linked data</a>, and offers human-readable HTML pages, as well as machine-readable RDF pages for many of the entities contained herein.  For instance, you can request an RDF/XML representation of each abstract by simply replacing the ".html" extension at the end of the hyperlink with ".rdf".  For a more detailed description, see our <a href="{{lodspk.home}}about/lod">How To Use AGU Linked Data</a> page.</p>
