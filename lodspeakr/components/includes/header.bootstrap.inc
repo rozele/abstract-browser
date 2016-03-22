@@ -134,6 +134,7 @@
                 <!--<li><a href="{{lodspk.home}}classes">Classes</a></li>-->
                 <!--<li><a href="{{lodspk.home}}namedGraphs">Named Graphs</a></li>-->
                 <li><a href="{{lodspk.home}}meetings">Meetings</a></li>
+                <li><a href="{{lodspk.home}}vps">Virtual Posters</a></li>
                 <!--<li><a href="{{lodspk.home}}people">Authors</a></li>-->
                 <li><a href="{{lodspk.home}}sections">Sections</a></li>
                 <li><a href="{{lodspk.home}}keywords">Index Terms</a></li>

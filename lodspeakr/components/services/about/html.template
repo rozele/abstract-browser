@@ -55,6 +55,7 @@
 <p>Currently, there are four services that can be used to find abstracts:
 <ul>
 <li><a href="{{lodspk.home}}meetings">Meeting-at-a-Glance</a> - The Meeting-at-a-Glance experience has been reworked to leverage the power of linked data, providing the ability to follow links to various entities, including meetings, sections, sessions, authors, organizations, and index terms, in order to discover related work.</li>
+<li><a href="{{lodspk.home}}vps">Virtual Poster Showcases</a> - The Virtual Poster Showcases are collections of poster papers presented by students in electronic format.</li>
 <li><a href="{{lodspk.home}}sections">Sections pages</a> - Start looking for sessions from the AGU section you most closely identify with the new Sections pages.</li>
 <li><a href="{{lodspk.home}}keywords">Index Terms pages</a> - Start looking for abstracts tagged with index terms that you are interested in from the new Index Term pages.</li>  
 <!--<li><a href="{{lodspk.home}}dbsearch.php">Advanced Search</a> - Use the boolean Advanced Search interface for a more fine-grained abstract search experience.</li>-->
