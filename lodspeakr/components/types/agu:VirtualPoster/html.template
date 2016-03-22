@@ -3,7 +3,6 @@
     <h3>Details</h3>
     <table class="table table-striped">
     <tr><td><b>Meeting</b></td><td><a href="{{first.main.meeting.value}}">{{first.main.meetingYear.value|substr:"0,4"}} {{first.main.meetingTitle.value}}</a></td></tr>
-    <tr><td><b>Identifier</b></td><td>{{first.main.id.value}}</td></tr>
     <tr><td><b>Authors</b></td>
       <td>
       {% for row in models.authors %}
