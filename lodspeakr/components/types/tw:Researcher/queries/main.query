@@ -1,4 +1,4 @@
-SELECT DISTINCT ?poster ?title ?person ?personname ?index
+SELECT DISTINCT ?poster ?title ?person ?personname
 WHERE {
   {%include "../../../includes/graphs.inc"%}
   GRAPH ?graph {

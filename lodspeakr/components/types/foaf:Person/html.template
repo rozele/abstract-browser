@@ -18,4 +18,14 @@
     {% endfor %}
     </ol>
     {%endif%}
+    {% if first.posters.resource %}
+    {%endif%}
+    {% if first.posters.resource %}
+    <h3>Virtual Posters</h3>
+    <ol>
+    {% for row in models.posters %}
+    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}-{{row.index.value}}] {{row.title.value|urldecode}}</a></li>
+    {% endfor %}
+    </ol>
+    {%endif%}
 {%include "../../includes/footer.inc"%}
