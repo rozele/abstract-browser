@@ -13,5 +13,5 @@ WHERE {
   {%endif%}
 }
 GROUP BY ?resource ?title ?thumbnail ?index
-ORDER BY desc(?year) ?index
+ORDER BY desc(?year) desc(?index)
 LIMIT {{lodspk.maxResults}}

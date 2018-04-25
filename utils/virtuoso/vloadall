@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOADER=/opt/virtuoso/scripts/vload
+LOADER=/projects/abstracts/utils/virtuoso/vload
 #DELETER=/opt/virtuoso/scripts/vdelete
 
 if [ $# -lt 2 ]; then

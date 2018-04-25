@@ -1,5 +1,5 @@
 {%include "../../includes/header.inc"%}
-    <h2>{{first.main.name.value}}</h2>
+    <h2>{{first.main.name.value}}{% if first.main.email %} ({{first.main.email.value}}){%endif%}</h2>
     {% if first.abstracts.resource %}
     <h3>Abstracts</h3>
     <ol>

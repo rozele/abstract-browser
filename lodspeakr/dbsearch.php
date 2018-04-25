@@ -341,10 +341,12 @@ function buildQuery($disjunctions, $limit, $offset, $counting = false) {
   );
   if (!$counting) $bgps = array_merge($bgps, array(
     "?abstract swc:relatedToEvent ?session . ",
+    "OPTIONAL { ", # TN for VPS
     "?session swc:isSubEventOf ?meeting . ",
     "?meeting agu:meetingCode ?code . ",
     "?meeting swrc:year ?myear . ",
-    "?meeting swrc:startDate ?start . "
+    "?meeting swrc:startDate ?start . ",
+    "}" # TN for VPS
   ));
   $linked = array_unique(array_merge($linked, $bgps));
   $q .= implode("", $linked);
@@ -382,11 +384,11 @@ function getDebug() {
 
 function getPaging() {
   $limit = 50;
-  if ($_GET["limit"] && $_GET["limit"] != "") {
+  if (isset($_GET["limit"]) && $_GET["limit"] != "") {
     $limit = intval($_GET["limit"]);
   }
   $offset = 0;
-  if ($_GET["offset"] && $_GET["offset"] != "") {
+  if (isset($_GET["offset"]) && $_GET["offset"] != "") {
     $offset = intval($_GET["offset"]);
   }
   return array($limit,$offset);
@@ -403,10 +405,10 @@ function getUrl($limit,$offset,$next) {
   foreach ($_GET["field"] as $i => $f) {
     $qstring .= "&field%5B%5D=$f";
   }
-  foreach ($_GET["boolean"] as $i => $f) {
-    if ($i != 0) $qstring .= "&";
-    $qstring .= "&boolean%5B%5D=$f";
-  }
+  #foreach ($_GET["boolean"] as $i => $f) {
+  #  if ($i != 0) $qstring .= "&";
+  #  $qstring .= "&boolean%5B%5D=$f";
+  #}
   $offset = ($next) ? $limit + $offset : $offset - $limit;
   $qstring .= "&limit=$limit&offset=$offset";
   return $qstring;
@@ -444,18 +446,19 @@ $limit = $paging[0];
 $offset = $paging[1];
 
 if ($argc == 0) {
-  echo "<p>Enter query terms and select fields to search:</p>" .
-    "<form action=\"dbsearch.php\">" .
-    "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"q[]\" /><br/>" .
-    "<span>In&nbsp;&nbsp;<select name=\"field[]\">" . getFieldOptions() . "</select>&nbsp;&nbsp;" . 
-    "<select class=\"input-small\" name=\"boolean[]\">" . getBooleanOptions(). "</select></span></p>" .
-    "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"q[]\" /><br/>" .
-    "<span>In&nbsp;&nbsp;<select name=\"field[]\">" . getFieldOptions() . "</select>&nbsp;&nbsp;" . 
-    "<select class=\"input-small\" name=\"boolean[]\">" . getBooleanOptions(). "</select></span></p>" .
-    "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"q[]\" /><br/>" .
-    "<span>In&nbsp;&nbsp;<select name=\"field[]\">" . getFieldOptions() . "</select></span></p>" .
-    "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"submit\" value=\"Search\"></p></form>" .
-    "<p>For more information about each of the fields, check out the <a href=\"http://abstractsearch.agu.org/about/advsrch\">Advanced Search Field Overview</a>.</p>";
+  echo "<br/><p>No query terms were entered</p>";
+  #echo "<p>Enter query terms and select fields to search:</p>" .
+  #  "<form action=\"dbsearch.php\">" .
+  #  "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"q[]\" /><br/>" .
+  #  "<span>In&nbsp;&nbsp;<select name=\"field[]\">" . getFieldOptions() . "</select>&nbsp;&nbsp;" . 
+  #  "<select class=\"input-small\" name=\"boolean[]\">" . getBooleanOptions(). "</select></span></p>" .
+  #  "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"q[]\" /><br/>" .
+  #  "<span>In&nbsp;&nbsp;<select name=\"field[]\">" . getFieldOptions() . "</select>&nbsp;&nbsp;" . 
+  #  "<select class=\"input-small\" name=\"boolean[]\">" . getBooleanOptions(). "</select></span></p>" .
+  #  "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"q[]\" /><br/>" .
+  #  "<span>In&nbsp;&nbsp;<select name=\"field[]\">" . getFieldOptions() . "</select></span></p>" .
+  #  "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"submit\" value=\"Search\"></p></form>" .
+  #  "<p>For more information about each of the fields, check out the <a href=\"http://abstractsearch.agu.org/about/advsrch\">Advanced Search Field Overview</a>.</p>";
 }
 
 else {

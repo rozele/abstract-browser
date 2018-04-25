@@ -62,5 +62,24 @@
 </ul>
 Or, find abstracts from the <a href="{{first.latest.resource.value}}">{{first.latest.year.value|substr:"0,4"}} {{first.latest.title.value}}</a>.</p>
 <p>The AGU Abstract Browser is based on <a href="http://en.wikipedia.org/wiki/Linked_Data">linked data</a>, and offers human-readable HTML pages, as well as machine-readable RDF pages for many of the entities contained herein.  For instance, you can request an RDF/XML representation of each abstract by simply replacing the ".html" extension at the end of the hyperlink with ".rdf".  For a more detailed description, see our <a href="{{lodspk.home}}about/lod">How To Use AGU Linked Data</a> page.</p>
+<h3>Additional resources for searching abstracts submitted to meetings of the American Geophysical Union</h3><br/>
+<p>Abstracts and full-text of major astronomy and physics publications are indexed and searchable at <a href="http://adsabs.harvard.edu/ads_abstracts.html">ADS Abstract Service</a></p>
+<p>You can navigate specific content using the following query interfaces: 
+<ul>
+  <li><a href="https://ui.adsabs.harvard.edu">ADS "Bumblebee" Interface</a></li>
+  <li><a href="http://adsabs.harvard.edu/ads_browse.html">ADS Browse Service</a></li>
+</ul>
+</p>
+<p>
+In addition, you may search meeting content via the following AGU meeting Online Scientific Programs for:
+<ul>
+  <li><a href="https://agu.confex.com/agu/os18/meetingapp.cgi/Home/0">2018 Ocean Sciences Meeting</a></li>
+  <li><a href="https://agu.confex.com/agu/fm17/meetingapp.cgi">2017 Fall Meeting</a></li>
+  <li><a href="https://agu.confex.com/agu/fm16/meetingapp.cgi">2016 Fall Meeting</a></li>
+  <li><a href="https://agu.confex.com/agu/os16/meetingapp.cgi/Home/0">2016 Ocean Sciences Meeting</a></li>
+  <li><a href="https://agu.confex.com/agu/fm15/meetingapp.cgi">2015 Fall Meeting</a></li>
+  <li><a href="https://agu.confex.com/agu/fm14/meetingapp.cgi">2014 Fall Meeting</a></li>
+</ul>
+</p>
 {%endif%}
 {%include "../../includes/footer.inc"%}

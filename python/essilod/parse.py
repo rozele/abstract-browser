@@ -45,6 +45,8 @@ class BlockStream(object):
 			except SessionParseError:
 				try:
 					yield HtmlAbstract(block,None,self.meeting,True)
+                                except AbstractParseError:
+                                        yield block
 				except IgnoreAbstractError:
 					yield block
 
