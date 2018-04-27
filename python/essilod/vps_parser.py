@@ -21,17 +21,30 @@ Iterates over each line, extracting a Session instance for each
 Uses SessionSummary subclass to extract data
 """
 
-def parse_person(row, index):
+def parse_person(row, index, role):
     person = Person()
     person.name = "%s %s" % (row[index+1],row[index+2])
     person.email = row[index+4] if row[index+4] != '' else None
+    person.identifier = "%s/person" % role.uri()
+    return person
+
+def parse_person2(row, index, role):
+    person = Person()
+    person.name = "%s %s" % (row[index+1],row[index+2])
+    person.identifier = "%s/person" % role.uri()
     return person
 
 def parse_organization(row, index):
-    return Organization(", ".join(row[index:index+5]).replace(", ,", ","))
+    return Organization(trim_commas(", ".join(row[index:index+5]).replace(", ,", ",")))
     
 def parse_organization2(row, index):
-    return Organization("%s, %s" % (row[index],row[index+4]))
+    return Organization(trim_commas(", ".join(row[index:index+6]).replace(", ,", ",")))
+
+def trim_commas(s):
+    i = len(s) - 1
+    while (i > 0 and (s[i] == ' ' or s[i] == ',')):
+        i -= 1
+    return s[:i+1]
 
 def parse_poster(row, id, vps):
     poster = VirtualPoster()
@@ -42,37 +55,37 @@ def parse_poster(row, id, vps):
     poster.division=row[3]
     
     firstAuthor = Author()
-    firstAuthor.person = parse_person(row, 4)
+    firstAuthor.abstract = poster
+    firstAuthor.index = 1
+    firstAuthor.person = parse_person(row, 4, firstAuthor)
     firstAuthorOrganization = parse_organization(row, 9)
     firstAuthorOrganization.authorships.append(firstAuthor)
     firstAuthor.affiliations.append(firstAuthorOrganization)
-    firstAuthor.index = 1
     firstAuthor.corresponding = True
-    firstAuthor.abstract = poster
                 
     researcher = Researcher()
-    researcher.person = parse_person(row, 15)
-    researcherOrganization = parse_organization(row, 9)
+    researcher.abstract = poster
+    researcher.index = 1
+    researcher.person = parse_person2(row, 14, researcher)
+    researcherOrganization = parse_organization(row, 18)
     researcherOrganization.authorships.append(researcher)
     researcher.affiliations.append(researcherOrganization)
-    researcher.index = 1
-    researcher.abstract = poster
     
     poster.authors.append(firstAuthor)
     poster.researcher = researcher
     
-    startIndex = 26
+    startIndex = 24
     maxAuthors = 8
     for i in range(2, maxAuthors + 1):
         if row[startIndex] != '':
             author = Author()
-            author.person = parse_person(row,startIndex)
+            author.abstract = poster
+            author.index = i
+            author.person = parse_person(row,startIndex,author)
             organization = parse_organization2(row,startIndex+5)
             organization.authorships.append(author)
             author.affiliations.append(organization)
-            author.index = i
             author.corresponding = False
-            author.abstract = poster
             poster.authors.append(author)
         startIndex += 11
     
