@@ -35,14 +35,20 @@ def parse_person2(row, index, role):
     return person
 
 def parse_organization(row, index):
-    return Organization(trim_commas(", ".join(row[index:index+5]).replace(", ,", ",")))
-    
+    description = trim_commas(", ".join(row[index:index+5]).replace(", ,", ","))
+    if description == '' or description == None:
+        return None
+    return Organization(description)
+
 def parse_organization2(row, index):
-    return Organization(trim_commas(", ".join(row[index:index+6]).replace(", ,", ",")))
+    description = trim_commas(", ".join(row[index:index+6]).replace(", ,", ","))
+    if description == '' or description == None:
+        return None
+    return Organization(description)
 
 def trim_commas(s):
     i = len(s) - 1
-    while (i > 0 and (s[i] == ' ' or s[i] == ',')):
+    while (i >= 0 and (s[i] == ' ' or s[i] == ',')):
         i -= 1
     return s[:i+1]
 
@@ -59,17 +65,19 @@ def parse_poster(row, id, vps):
     firstAuthor.index = 1
     firstAuthor.person = parse_person(row, 4, firstAuthor)
     firstAuthorOrganization = parse_organization(row, 9)
-    firstAuthorOrganization.authorships.append(firstAuthor)
-    firstAuthor.affiliations.append(firstAuthorOrganization)
     firstAuthor.corresponding = True
+    if firstAuthorOrganization != None:
+        firstAuthorOrganization.authorships.append(firstAuthor)
+        firstAuthor.affiliations.append(firstAuthorOrganization)
                 
     researcher = Researcher()
     researcher.abstract = poster
     researcher.index = 1
     researcher.person = parse_person2(row, 14, researcher)
-    researcherOrganization = parse_organization(row, 18)
-    researcherOrganization.authorships.append(researcher)
-    researcher.affiliations.append(researcherOrganization)
+    researcherOrganization = parse_organization2(row, 18)
+    if researcherOrganization != None:
+        researcherOrganization.authorships.append(researcher)
+        researcher.affiliations.append(researcherOrganization)
     
     poster.authors.append(firstAuthor)
     poster.researcher = researcher
@@ -82,11 +90,12 @@ def parse_poster(row, id, vps):
             author.abstract = poster
             author.index = i
             author.person = parse_person(row,startIndex,author)
-            organization = parse_organization2(row,startIndex+5)
-            organization.authorships.append(author)
-            author.affiliations.append(organization)
             author.corresponding = False
             poster.authors.append(author)
+            organization = parse_organization2(row,startIndex+5)
+            if organization != None:
+                organization.authorships.append(author)
+                author.affiliations.append(organization)
         startIndex += 11
     
     poster.file = row[103] if row[103] != '' else None
