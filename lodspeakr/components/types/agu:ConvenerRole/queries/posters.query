@@ -1,0 +1,18 @@
+SELECT DISTINCT ?id ?title ?resource ?meeting ?code ?year ?index
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  ?person tw:hasRole <{{uri}}> .
+  ?resource tw:hasAgentWithRole ?role .
+  ?person tw:hasRole ?role .
+  ?resource dcterms:title ?title ;
+    dcterms:identifier ?id .
+  ?resource a agu:VirtualPoster .
+  ?resource swc:relatedToEvent ?meeting .
+  GRAPH ?graph {
+    ?meeting swrc:year ?year .
+  }
+  ?meeting agu:showcaseIndex ?index ;
+    agu:meetingCode ?code .
+}
+ORDER BY desc(?index)
+LIMIT {{lodspk.maxResults}}

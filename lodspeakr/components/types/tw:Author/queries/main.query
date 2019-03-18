@@ -1,4 +1,4 @@
-SELECT DISTINCT ?abstract ?abstitle ?person ?personname ?index
+SELECT DISTINCT ?abstract ?abstitle ?person ?personname ?index SHA256(?email) as ?hash
 WHERE {
   {%include "../../../includes/duo-graphs.inc"%}
   GRAPH ?g1 {
@@ -10,6 +10,7 @@ WHERE {
   GRAPH ?g2 {
     ?person tw:hasRole <{{uri}}> ;
       foaf:name ?personname .
+    OPTIONAL { ?person foaf:mbox ?email }
   } 
 }
 LIMIT 1

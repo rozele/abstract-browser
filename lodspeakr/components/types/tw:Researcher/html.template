@@ -1,9 +1,35 @@
 {%include "../../includes/header.inc"%}
     <table class="table table-striped" about="{{uri}}">
-      <tr><td><b>Person</b></td><td><a href="{{first.main.person.value}}">{{first.main.personname.value}}</a></td>
-      {% if first.organization.resource %}<tr><td><b>Affiliation</b></td><td><a href="{{first.organization.resource.value}}">{{first.organization.name.value}}</a></td>{%endif%}
+      <tr><td><b>Person</b></td><td>{{first.main.personname.value}}</td>
+      {% if first.organization.resource %}<tr><td><b>Affiliation</b></td><td>{{first.organization.name.value}}</td>{%endif%}
       {% if first.main.poster %}
       <tr><td><b>Poster</b></td><td><a href="{{first.main.poster.value}}">{{first.main.title.value|urldecode}}</a></td>
       {% endif %}
     </table>
+    {% if first.abstracts.resource %}
+    <h3>Researcher Abstracts</h3>
+    <ol>
+    {% for row in models.abstracts %}
+    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}] {{row.title.value|urldecode}}</a></li>
+    {% endfor %}
+    </ol>
+    {%endif%}
+    {% if first.sessions.resource %}
+    <h3>Researcher Sessions</h3>
+    <ol>
+    {% for row in models.sessions %}
+    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}] {{row.title.value|urldecode}}</a></li>
+    {% endfor %}
+    </ol>
+    {%endif%}
+    {% if first.posters.resource %}
+    {%endif%}
+    {% if first.posters.resource %}
+    <h3>Researcher Virtual Posters</h3>
+    <ol>
+    {% for row in models.posters %}
+    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}-{{row.index.value}}] {{row.title.value|urldecode}}</a></li>
+    {% endfor %}
+    </ol>
+    {%endif%}
 {%include "../../includes/footer.inc"%}

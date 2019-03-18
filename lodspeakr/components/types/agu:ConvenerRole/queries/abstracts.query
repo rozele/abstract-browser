@@ -1,0 +1,19 @@
+SELECT DISTINCT ?id ?title ?resource ?meeting ?code ?year
+WHERE {
+  {%include "../../../includes/graphs.inc"%}
+  ?person tw:hasRole <{{uri}}> .
+  ?resource tw:hasAgentWithRole ?role .
+  ?person tw:hasRole ?role .
+  ?resource dcterms:title ?title ;
+    dcterms:identifier ?id .
+  ?resource a agu:Abstract .
+  ?resource swc:relatedToEvent ?session .
+  ?session swc:isSubEventOf ?meeting .
+  GRAPH ?graph {
+    ?meeting swrc:year ?year .
+  }
+  ?meeting swrc:startDate ?start ;
+    agu:meetingCode ?code .
+}
+ORDER BY desc(?start)
+LIMIT {{lodspk.maxResults}}
