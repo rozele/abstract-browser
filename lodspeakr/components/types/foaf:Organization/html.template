@@ -4,7 +4,7 @@
     <h3>Affiliates</h3>
     <ol>
     {% for row in models.affiliates %}
-    <li><a href="{{row.resource.value}}">{{row.name.value|urldecode}}</a></li>
+    <li>{{row.name.value|urldecode}}</li>
     {% endfor %}
     </ol>
     {%endif%}

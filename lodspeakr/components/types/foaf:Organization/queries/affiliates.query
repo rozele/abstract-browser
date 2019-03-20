@@ -1,7 +1,7 @@
 SELECT DISTINCT MIN(?pname) as ?name ?resource
 WHERE {
   {%include "../../../includes/graphs.inc"%}
-  GRAPH ?g {
+  GRAPH ?graph {
     ?resource tw:hasRole ?role ;
       foaf:name ?pname ;
       foaf:name ?sname .
