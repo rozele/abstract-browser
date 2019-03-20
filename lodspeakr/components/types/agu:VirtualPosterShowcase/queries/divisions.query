@@ -8,5 +8,5 @@ WHERE {
   ?poster a agu:VirtualPoster .
   ?poster agu:division ?name .
 }
-ORDER BY ?id
+ORDER BY ?name
 LIMIT {{lodspk.maxResults}}
