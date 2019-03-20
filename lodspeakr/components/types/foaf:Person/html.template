@@ -1,31 +1,3 @@
 {%include "../../includes/header.inc"%}
-    <h2>{{first.main.name.value}}</h2>
-    {% if first.abstracts.resource %}
-    <h3>Abstracts</h3>
-    <ol>
-    {% for row in models.abstracts %}
-    <!--<li><a href="{{row.meeting.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}]</a> <a href="{{row.resource.value}}">{{row.title.value}}</a></li>-->
-    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}] {{row.title.value|urldecode}}</a></li>
-    {% endfor %}
-    </ol>
-    {%endif%}
-    {% if first.sessions.resource %}
-    <h3>Sessions</h3>
-    <ol>
-    {% for row in models.sessions %}
-    <!--<li><a href="{{row.meeting.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}]</a> <a href="{{row.resource.value}}">{{row.title.value}}</a></li>-->
-    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}] {{row.title.value|urldecode}}</a></li>
-    {% endfor %}
-    </ol>
-    {%endif%}
-    {% if first.posters.resource %}
-    {%endif%}
-    {% if first.posters.resource %}
-    <h3>Virtual Posters</h3>
-    <ol>
-    {% for row in models.posters %}
-    <li><a href="{{row.resource.value}}">[{{row.code.value}}{{row.year.value|substr:"2,2"}}-{{row.index.value}}] {{row.title.value|urldecode}}</a></li>
-    {% endfor %}
-    </ol>
-    {%endif%}
+{%include "../../includes/uri-error.inc"%}
 {%include "../../includes/footer.inc"%}
