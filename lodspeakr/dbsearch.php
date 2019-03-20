@@ -45,6 +45,17 @@
         }
     </style>
     <link href="http://abstractsearch.agu.org/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116892593-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116892593-1');
+    </script>
+
     <script type="text/javascript" src="http://abstractsearch.agu.org/js/jquery.js"></script>
     <script type="text/javascript" src="http://abstractsearch.agu.org/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://abstractsearch.agu.org/js/bootstrap-typeahead.js"></script>

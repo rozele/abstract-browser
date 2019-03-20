@@ -73,8 +73,8 @@ def parse_poster(row, id, vps):
     researcher = Researcher()
     researcher.abstract = poster
     researcher.index = 1
-    researcher.person = parse_person2(row, 14, researcher)
-    researcherOrganization = parse_organization2(row, 18)
+    researcher.person = parse_person(row, 14, researcher)
+    researcherOrganization = parse_organization2(row, 19)
     if researcherOrganization != None:
         researcherOrganization.authorships.append(researcher)
         researcher.affiliations.append(researcherOrganization)
@@ -82,10 +82,10 @@ def parse_poster(row, id, vps):
     poster.authors.append(firstAuthor)
     poster.researcher = researcher
     
-    startIndex = 24
+    startIndex = 25
     maxAuthors = 8
     for i in range(2, maxAuthors + 1):
-        if row[startIndex] != '':
+        if len(row) > startIndex and row[startIndex] != '':
             author = Author()
             author.abstract = poster
             author.index = i
@@ -98,7 +98,7 @@ def parse_poster(row, id, vps):
                 author.affiliations.append(organization)
         startIndex += 11
     
-    poster.file = row[103] if row[103] != '' else None
+    poster.file = row[103] if len(row) > 103 and row[103] != '' else None
     return poster 
     
 def parse_vps(i,o,abbr,ext="ttl"):
